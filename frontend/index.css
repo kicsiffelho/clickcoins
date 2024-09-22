@@ -14,21 +14,21 @@ body {
   justify-content: center;
   height: 100vh;
   padding: 15px;
-  background: #310743;
+  background: #353535fc;
   overflow: hidden;
 }
 
 .wrapper {
   max-width: 500px;
   width: 100%;
-  background: #353535fc;
+  background: #222222fc;
   border-radius: 5px;
   box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper .title {
   height: 120px;
-  background: #7b16a0;
+  background: #362a3a;
   border-radius: 5px 5px 0 0;
   color: #d0d0d0;
   font-size: 30px;
@@ -57,7 +57,7 @@ body {
   border: 1px solid rgb(158, 158, 158);
   font-size: 18px;
   transition: all 0.3s ease;
-  background: #5d5d5d;
+  background: #595959;
 }
 
 form .row input:focus {
@@ -74,7 +74,7 @@ form .row input::placeholder {
   height: 100%;
   color: #696969;
   font-size: 22px;
-  background: #9313ca;
+  background: #6f3787;
   border: 1px solid #ababab;
   border-radius: 5px 0 0 5px;
   display: flex;
@@ -115,6 +115,7 @@ form .button input:hover {
   text-align: center;
   margin-top: 45px;
   font-size: 17px;
+  color: #d8d8d8;
 }
 
 .wrapper form .signup-link a {
