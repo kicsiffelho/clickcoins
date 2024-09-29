@@ -7,6 +7,8 @@ const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
 const timerDisplay = document.getElementById('timer');
 const startOverlay = document.getElementById('start-overlay');
+const scoreModal = document.getElementById('score-modal');
+const tryAgainButton = document.getElementById('try-again-button');
 
 // Start game
 function startGame() {
@@ -15,23 +17,26 @@ function startGame() {
     score = 0;
     timeLeft = 10;
     updateScoreDisplay();
-    upadteTimerDisplay();
+    updateTimerDisplay();
 
     // Remove overlay
     startOverlay.style.display = 'none';
     gameArea.style.display = 'block';
     scoreDisplay.style.display = 'block';
     timerDisplay.style.display = 'block';
+    scoreModal.style.display = 'none';
+
+    createCoin();
 
     coinInterval = setInterval(createCoin, 800);
-    timerInterval = setInterval(upadteTimer, 800);
+    timerInterval = setInterval(updateTimer, 800);
 }
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${score}`;
 }
 
-function upadteTimerDisplay() {
+function updateTimerDisplay() {
     timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
@@ -43,7 +48,7 @@ function generateRandomPosition() {
 }
 
 function createCoin() {
-    if (timeLeft < 0) return;
+    if (timeLeft <= 0) return;
 
     const coin = document.createElement('img');
     coin.src = '../assets/coin.png';
@@ -70,18 +75,27 @@ function createCoin() {
     }, 1000)
 }
 
-function upadteTimer() {
-    if (timeLeft < 0) return;
+function updateTimer() {
+    if (timeLeft <= 0) return;
 
     timeLeft--;
-    upadteTimerDisplay();
-    if (timeLeft < 0) {
+    updateTimerDisplay();
+    if (timeLeft <= 0) {
         clearInterval(coinInterval);
         clearInterval(timerInterval);
-        alert(`Game over! Final score: ${score}`);
-
-        window.location.href = 'main.html';
+        showFinalScore();
     }
 }
 
+function showFinalScore() {
+    document.getElementById('final-score').textContent = `Final score: ${score}`;
+    scoreModal.style.display = 'block';
+}
+
 document.getElementById('start-button').onclick = startGame;
+
+tryAgainButton.onclick = function() {
+    startGame();
+};
+
+scoreModal.style.display = 'none';
