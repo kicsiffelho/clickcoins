@@ -86,3 +86,17 @@ body {
   float: right;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .modal-content {
+    font-size: 14px;
+    padding: 10px;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  #try-again-button {
+    padding: 5px;
+  }
+}
