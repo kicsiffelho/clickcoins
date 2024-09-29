@@ -1,0 +1,88 @@
+body {
+  background: #353535fc;
+}
+
+#start-overlay {
+  position: relative;
+  top: 56px;
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-area {
+  position: relative;
+  overflow: hidden;
+  display: none;
+  border: 2px solid #7c5cc4;
+  width: 70vw;
+  height: 70vh;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#start-button {
+  padding: 20px 40px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #7c5cc4;
+  border: 2px solid #280003;
+  color: white;
+  border-radius: 20px;
+}
+
+.coin {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+#score, #timer {
+  color: whitesmoke;
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background-color: rgba(0,0,0,0.7);
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.modal-content {
+  background-color: #7c5cc4;
+  border: 1px solid #280003;
+  color: whitesmoke;
+  margin: 15% auto;
+  padding: 20px;
+  width: 25%;
+  text-align: center;
+}
+
+#try-again-button {
+  padding: 20px;
+}
+
+#close-modal {
+  font-size: 30px;
+  color: whitesmoke;
+  float: right;
+  cursor: pointer;
+}
