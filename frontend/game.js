@@ -1,7 +1,9 @@
 let score = 0;
-let timeLeft = 10;
+let timeLeft = 30;
 let coinInterval;
 let timerInterval;
+let difficultyInterval;
+let coinIntervalTime = 800;
 
 const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
@@ -16,7 +18,8 @@ function startGame() {
 
     // Reset score and timer
     score = 0;
-    timeLeft = 10;
+    timeLeft = 30;
+    coinIntervalTime = 800;
     updateScoreDisplay();
     updateTimerDisplay();
 
@@ -29,8 +32,9 @@ function startGame() {
 
     createCoin();
 
-    coinInterval = setInterval(createCoin, 800);
-    timerInterval = setInterval(updateTimer, 800);
+    coinInterval = setInterval(createCoin, coinIntervalTime);
+    timerInterval = setInterval(updateTimer, 1000);
+    difficultyInterval = setInterval(increaseDifficulty, 5000);
 }
 
 function updateScoreDisplay() {
@@ -84,7 +88,16 @@ function updateTimer() {
     if (timeLeft <= 0) {
         clearInterval(coinInterval);
         clearInterval(timerInterval);
+        clearInterval(difficultyInterval);
         showFinalScore();
+    }
+}
+
+function increaseDifficulty() {
+    if (coinIntervalTime > 300) {
+        coinIntervalTime -= 100;
+        clearInterval(coinInterval);
+        coinInterval = setInterval(createCoin, coinIntervalTime);
     }
 }
 
