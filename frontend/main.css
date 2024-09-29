@@ -56,11 +56,11 @@ body {
   top: 50%;
   left: 50%;
   padding: 20px;
-  width: 70vw;
-  height: 70vh;
+  width: 100vw;
+  height: 100vh;
   display: none;
-  background-color: rgba(0,0,0,0.5);
-  transform: translate(-50%, -46.5%);
+  background-color: rgba(0,0,0,0.7);
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -72,10 +72,17 @@ body {
   color: whitesmoke;
   margin: 15% auto;
   padding: 20px;
-  width: 50%;
+  width: 25%;
   text-align: center;
 }
 
 #try-again-button {
   padding: 20px;
+}
+
+#close-modal {
+  font-size: 30px;
+  color: whitesmoke;
+  float: right;
+  cursor: pointer;
 }

@@ -9,6 +9,7 @@ const timerDisplay = document.getElementById('timer');
 const startOverlay = document.getElementById('start-overlay');
 const scoreModal = document.getElementById('score-modal');
 const tryAgainButton = document.getElementById('try-again-button');
+const closeModalButton = document.getElementById('close-modal');
 
 // Start game
 function startGame() {
@@ -99,3 +100,8 @@ tryAgainButton.onclick = function() {
 };
 
 scoreModal.style.display = 'none';
+
+closeModalButton.onclick = function() {
+    scoreModal.style.display = 'none';
+    window.location.href = 'main.html';
+}
