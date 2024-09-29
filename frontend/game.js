@@ -23,8 +23,8 @@ function startGame() {
     scoreDisplay.style.display = 'block';
     timerDisplay.style.display = 'block';
 
-    coinInterval = setInterval(createCoin, 950);
-    timerInterval = setInterval(upadteTimer, 950);
+    coinInterval = setInterval(createCoin, 800);
+    timerInterval = setInterval(upadteTimer, 800);
 }
 
 function updateScoreDisplay() {
@@ -32,7 +32,7 @@ function updateScoreDisplay() {
 }
 
 function upadteTimerDisplay() {
-    timerDisplay.textContent = `Time Left: ${timeLeft}`;
+    timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
 // Generate random positions for coins
@@ -43,7 +43,7 @@ function generateRandomPosition() {
 }
 
 function createCoin() {
-    if (timeLeft <= 0) return;
+    if (timeLeft < 0) return;
 
     const coin = document.createElement('img');
     coin.src = '../assets/coin.png';
@@ -71,11 +71,11 @@ function createCoin() {
 }
 
 function upadteTimer() {
-    if (timeLeft <= 0) return;
+    if (timeLeft < 0) return;
 
     timeLeft--;
     upadteTimerDisplay();
-    if (timeLeft <= 0) {
+    if (timeLeft < 0) {
         clearInterval(coinInterval);
         clearInterval(timerInterval);
         alert(`Game over! Final score: ${score}`);
