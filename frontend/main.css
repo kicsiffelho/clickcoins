@@ -25,7 +25,7 @@ body {
   display: none;
   border: 2px solid #7c5cc4;
   width: 70vw;
-  height: 70vh;
+  height: 60vh;
   margin: 0 auto;
   cursor: pointer;
 }
@@ -90,13 +90,13 @@ body {
 @media (max-width: 600px) {
   .modal-content {
     font-size: 14px;
-    padding: 10px;
-    line-height: 1.2;
+    padding: 15px;
+    line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
   #try-again-button {
-    padding: 5px;
+    padding: 10px;
   }
 }
