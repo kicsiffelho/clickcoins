@@ -24,9 +24,15 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = firebase.auth();
 
-function signUp() {
+function signUp(event) {
+    event.preventDefault();
     const email = document.getElementById("signup-email").value;
     const password = document.getElementById("signup-password").value;
+
+    if(!email || !password) {
+        console.error("Email and password required");
+        return;
+    }
 
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -35,17 +41,4 @@ function signUp() {
         .catch((error) => {
             console.error("Sign up error:", error.message);
         });
-}
-
-function signIn() {
-    const email = document.getElementById("signin-email").value;
-    const password = document.getElementById("signin-password").value;
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-        console.log("Signed In:", userCredential.user);
-    })
-        .catch((error) => {
-        console.error("Sign In Error:", error.message);
-    });
 }
