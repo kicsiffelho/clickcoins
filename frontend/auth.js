@@ -41,4 +41,6 @@ function signUp(event) {
         .catch((error) => {
             console.error("Sign up error:", error.message);
         });
+    
+        console.log("sign in with:", email, password);
 }
