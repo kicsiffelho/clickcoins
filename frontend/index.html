@@ -11,7 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <link rel="stylesheet" href="./index.css">
+    <script src="auth.js" defer></script>
   </head>
 
   <body>
@@ -20,15 +23,15 @@
       <form action="./welcome.html">
         <div class="row">
           <i class="fas fa-user"></i>
-          <input type="text" class="form-control" placeholder="Username" required />
+          <input type="text" class="form-control" id="signin-email" placeholder="Username" required />
         </div>
         <div class="row">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required />
+          <input type="password" id="signin-password" placeholder="Password" required />
         </div>
         <div class="pass"><a href="#">Forgot password?</a></div>
         <div class="row button">
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" onclick="signIn()"/>
         </div>
         <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
       </form>
