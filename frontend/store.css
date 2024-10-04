@@ -2,3 +2,18 @@ body {
     background: #353535fc;
   }
 
+header{
+  background: linear-gradient(#2c2231,#710d9c);
+}
+.card-body{
+  background-color: #222222;
+}
+
+.card-footer{
+  background-color: #222222 !important;
+}
+
+.btn-secondary{
+  background-color: #710d9c;
+  border: none;
+}
