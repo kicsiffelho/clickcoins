@@ -46,23 +46,25 @@
         </div>
     </nav>
 
-    <div class="container-fluid d-flex justify-content-center align-items-center mt-5">
-        <div class="row custom-width">
-            <form class="col-12 mt-5" id="signup-form">
-                <div class="mb-3">
-                    <label class="" for="email">Email</label>
-                    <input class="form-control" type="email" id="email">
-                    <label class="" for="password">Password</label>
-                    <input class="form-control" type="password" id="password">
+    <div class="custom-container">
+        <div class="wrapper">
+            <div class="title"><span>Sign Up</span></div>
+            <form action="./welcome.html">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="email" class="form-control" id="email" placeholder="Username" required />
                 </div>
-                <div>
-                    <input class="form-control mt-5 btn btn-dark custom-btn  btn-lg" type="submit" value="Sign up">
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="password" required />
                 </div>
+                <div class="row button mt-5">
+                    <input type="submit" value="Signup" />
+                </div>
+                <div class="signup-link"></div>
             </form>
         </div>
     </div>
-
-
 </body>
 
 </html>
