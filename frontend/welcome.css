@@ -2,6 +2,8 @@ body {
     background: #353535fc;
   }
 
-.btn{
-    
+.custom-btn{
+  border: none;
+  background-color: #710d9c;
+  color: #ffffff;
 }
