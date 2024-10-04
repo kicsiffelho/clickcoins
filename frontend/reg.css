@@ -1,0 +1,14 @@
+body {
+    background: #353535fc;
+  }
+
+  .custom-btn{
+    border: none;
+    background-color: #710d9c;
+    color: #ffffff;
+  }
+
+  .custom-width {
+    width: 50%;
+    max-width: 500px;
+}
