@@ -2,3 +2,7 @@ body {
     background: #353535fc;
   }
 
+  .custom-width {
+    width: 100%;
+    max-width: 1500px;
+}
