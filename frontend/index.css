@@ -160,7 +160,7 @@ form .signup-link a:hover {
 
 @media (max-width: 576px) {
   .wrapper {
-    max-width: 75%;
+    max-width: 85%;
   }
 
   .wrapper .title {
