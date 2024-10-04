@@ -26,8 +26,8 @@ app.get('/store', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'store.html'));
 });
 
-app.get('/leaderboard', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'leaderboard.html'));
+app.get('/score', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'score.html'));
 });
 
 app.listen(PORT, () => {
