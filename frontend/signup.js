@@ -2,25 +2,28 @@ import { Clerk } from "@clerk/clerk-js";
 
 const clerkPubKey = 'pk_test_Y29oZXJlbnQtcGVnYXN1cy04MS5jbGVyay5hY2NvdW50cy5kZXYk';
 
-const clerk = new Clerk(clerkPubKey);
-await clerk.load();
+async function initClerk() {
+    const clerk = new Clerk(clerkPubKey);
 
-if (clerk.user) {
-    document.getElementById("app").innerHTML = `
-    <div id="user-button"></div>
-    `;
+    await clerk.load();
 
-    const userButtonDiv =
-    document.getElementById("user-button");
+    if (clerk.user) {
+        document.getElementById("app").innerHTML = `
+            <div id="user-button"></div>
+        `;
 
-    clerk.mountUserButton(userButtonDiv);
-} else {
-    document.getElementById("app").innerHTML = `
-    <div id="sign-in"></div>
-    `;
+        const userButtonDiv = document.getElementById("user-button");
+        clerk.mountUserButton(userButtonDiv);
+    } else {
+        document.getElementById("app").innerHTML = `
+            <div id="sign-in"></div>
+        `;
 
-    const signInDiv =
-    document.getElementById("sign-in");
-
-    clerk.mountSignIn(signInDiv);
+        const signInDiv = document.getElementById("sign-in");
+        clerk.mountSignIn(signInDiv);
+    }
 }
+
+initClerk().catch(error => {
+    console.error("Failed to initialize Clerk:", error);
+});
