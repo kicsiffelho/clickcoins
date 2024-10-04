@@ -4,5 +4,20 @@ body {
 
   .custom-width {
     width: 100%;
-    max-width: 1500px;
+    max-width: 1200px;
+}
+
+.table{
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th{
+  font-size: 1.1rem;
+}
+
+.table th,
+.table td{
+  background-color: #272727fc;
+  text-align: center;
 }
