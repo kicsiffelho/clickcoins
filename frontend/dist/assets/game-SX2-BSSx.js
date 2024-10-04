@@ -1,0 +1,1 @@
+import{N as n}from"./clerk-BlvBUZtz.js";const o="pk_test_Y29oZXJlbnQtcGVnYXN1cy04MS5jbGVyay5hY2NvdW50cy5kZXYk",e=new n(o);async function c(){await e.load();const t=document.getElementById("user-button");t&&e.mountUserButton(t)}c().catch(t=>{console.error("Failed to initialize Clerk:",t)});

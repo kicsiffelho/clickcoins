@@ -22,6 +22,14 @@ app.get('/game', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'game.html'));
 });
 
+app.get('/store', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'store.html'));
+});
+
+app.get('/leaderboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'leaderboard.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

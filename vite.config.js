@@ -10,7 +10,9 @@ export default defineConfig({
                 main: path.resolve(__dirname, 'frontend/index.html'),
                 register: path.resolve(__dirname, 'frontend/reg.html'),
                 welcome: path.resolve(__dirname, 'frontend/welcome.html'),
-                game: path.resolve(__dirname, 'frontend/main.html')
+                game: path.resolve(__dirname, 'frontend/main.html'),
+                store: path.resolve(__dirname, 'frontend/store.html'),
+                leaderboard: path.resolve(__dirname, 'frontend/leaderboard.html'),
             },
         },
     },
