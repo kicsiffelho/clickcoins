@@ -56,8 +56,7 @@ function createCoin() {
     if (timeLeft <= 0) return;
 
     const coin = document.createElement('img');
-    coin.src = './assets/coin.png';
-    document.body.appendChild(coin);
+    coin.src = './assets/coin-image.png';
     coin.classList.add('coin');
     const { x, y } = generateRandomPosition();
     coin.style.left = `${x}px`;
