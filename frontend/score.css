@@ -21,7 +21,8 @@ font-size: 1.1rem;
 
 .table th,
 .table td{
-background-color: #292929fc;
+  text-align: center;
+  background-color: #292929fc;
 }
 
 footer{
