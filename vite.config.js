@@ -15,6 +15,7 @@ export default defineConfig({
                 score: path.resolve(__dirname, 'frontend/score.html'),
             },
         },
+        chunkSizeWarningLimit: 1000,
     },
     esbuild: {
         target: 'esnext',

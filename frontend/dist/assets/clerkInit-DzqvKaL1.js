@@ -1,0 +1,1 @@
+import{N as n}from"./clerk-B0VDegmf.js";const o=void 0,e=new n(o);async function i(){await e.load();const t=document.getElementById("user-button");t&&e.mountUserButton(t)}i().catch(t=>{console.error("Failed to initialize Clerk:",t)});
