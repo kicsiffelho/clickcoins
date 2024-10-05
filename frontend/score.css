@@ -10,9 +10,9 @@ body {
   max-width: 1200px;
 }
 
-.table{
-border-radius: 10px;
-overflow: hidden;
+.table {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .table th{
