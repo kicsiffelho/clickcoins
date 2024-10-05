@@ -5,10 +5,13 @@ export function changeBackgroundColor(color) {
 
 export function setBackgroundColor() {
   const gameAreaColor = localStorage.getItem("background");
-  if (gameAreaColor) {
-    const gameArea = document.getElementById("game-area");
-    if (gameArea) {
+  const gameArea = document.getElementById("game-area");
+  if (gameArea && gameAreaColor) {
       gameArea.style.backgroundColor = gameAreaColor;
-    }
   }
 }
+
+document.getElementById('bgBlue').addEventListener('click', function(event) {
+  event.preventDefault();
+  changeBackgroundColor('#0000FF');
+});
