@@ -2,70 +2,36 @@ body {
   background: #353535fc;
 }
 
-header{
-<<<<<<< Updated upstream
+header {
   height: 18vh;
-  background: linear-gradient(#2c2231,#710d9c);
+  background: linear-gradient(#2c2231, #710d9c);
 }
 
-.custom-container{
+.custom-container {
   align-items: center;
   justify-content: center;
 }
 
-.card-body{
+.card-body {
   background-color: #222222;
 }
 
-.card-footer{
+.card-footer {
   background-color: #222222 !important;
 }
 
-.btn-secondary{
+.btn-secondary {
   background-color: #710d9c;
   border: none;
 }
 
-footer{
+footer {
   margin-top: auto;
   position: relative;
   height: 23vh;
   background-color: #222222;
 }
 
-.table td{
+.table td {
   background-color: #222222;
-=======
-height: 18vh;
-background: linear-gradient(#2c2231,#710d9c);
-}
-
-.custom-container{
-align-items: center;
-justify-content: center;
-}
-
-.card-body{
-background-color: #222222;
-}
-
-.card-footer{
-background-color: #222222 !important;
-}
-
-.btn-secondary{
-background-color: #710d9c;
-border: none;
-}
-
-footer{
-margin-top: auto;
-position: relative;
-height: 23vh;
-background-color: #222222;
-}
-
-.table td{
-background-color: #222222;
->>>>>>> Stashed changes
 }

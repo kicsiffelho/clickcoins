@@ -2,14 +2,8 @@ body {
   background: #353535fc;
 }
 
-.custom-btn{
-<<<<<<< Updated upstream
+.custom-btn {
   border: none;
   background-color: #710d9c;
   color: #ffffff;
-=======
-border: none;
-background-color: #710d9c;
-color: #ffffff;
->>>>>>> Stashed changes
 }

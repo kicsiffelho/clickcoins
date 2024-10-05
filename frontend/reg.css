@@ -8,27 +8,23 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   padding: 15px;
   background: #353535fc;
   overflow: hidden;
 }
 
-.navbar{
-    width: 100%;
+.navbar {
+  width: 100%;
 }
 
-.custom-container{
-    margin-top: 10%;
+.custom-container {
+  margin-top: 10%;
 }
 
 .wrapper {
-<<<<<<< Updated upstream
   max-width: 400px;
-=======
-  max-width: 800px;
->>>>>>> Stashed changes
   width: 100%;
   background: #222222fc;
   border-radius: 5px;
