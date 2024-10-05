@@ -9,20 +9,27 @@
 
 body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  flex-direction: column;
   padding: 15px;
   background: #353535fc;
   overflow: hidden;
 }
 
+.navbar {
+  width: 100%;
+}
+
+.custom-container {
+  margin-top: 10%;
+}
+
 .wrapper {
-  max-width: 800px;
-  width: 120%;
+  max-width: 400px;
+  width: 100%;
   background: #222222fc;
   border-radius: 5px;
   box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+  margin: auto;
 }
 
 .wrapper .title {
