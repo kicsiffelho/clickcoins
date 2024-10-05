@@ -12,13 +12,16 @@ export function setBackgroundColor() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  const bgBlueButton = document.getElementById('bgBlue');
-  if (bgBlueButton) {
-    bgBlueButton.addEventListener('click', function(event) {
+  const bgButton = document.querySelectorAll('#bgBlue, #bgRed');
+  bgButton.forEach(button => {
+    button.addEventListener('click', function(event) {
       event.preventDefault();
-      changeBackgroundColor('#0000FF');
+      switch (button.id) {
+        case 'bgBlue':
+          changeBackgroundColor('#0000FF');
+          break;
+      }
     });
-  }
-
+  });
   setBackgroundColor();
 });
