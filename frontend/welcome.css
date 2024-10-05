@@ -1,15 +1,24 @@
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: #353535fc;
 }
 
 .custom-btn{
-<<<<<<< Updated upstream
-  border: none;
-  background-color: #710d9c;
-  color: #ffffff;
-=======
 border: none;
 background-color: #710d9c;
 color: #ffffff;
->>>>>>> Stashed changes
 }
+
+footer{
+  margin-top: auto;
+  position: relative;
+  height: 23vh;
+  background-color: #222222;
+  }
+  
+  .table td{
+    padding: 0;
+  background-color: #222222;
+  }
