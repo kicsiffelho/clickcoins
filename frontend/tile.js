@@ -11,7 +11,14 @@ export function setBackgroundColor() {
   }
 }
 
-document.getElementById('bgBlue').addEventListener('click', function(event) {
-  event.preventDefault();
-  changeBackgroundColor('#0000FF');
+document.addEventListener('DOMContentLoaded', function() {
+  const bgBlueButton = document.getElementById('bgBlue');
+  if (bgBlueButton) {
+    bgBlueButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      changeBackgroundColor('#0000FF');
+    });
+  }
+
+  setBackgroundColor();
 });
