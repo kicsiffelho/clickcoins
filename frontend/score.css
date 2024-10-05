@@ -1,7 +1,8 @@
 body {
-    background: #353535fc;
-  }
+  background: #353535fc;
+}
 
+<<<<<<< Updated upstream
   .custom-width {
     width: 100%;
     max-width: 1200px;
@@ -14,10 +15,29 @@ body {
 
 .table th{
   font-size: 1.1rem;
+=======
+.custom-width {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.table{
+border-radius: 10px;
+overflow: hidden;
+}
+
+.table th{
+font-size: 1.1rem;
+>>>>>>> Stashed changes
 }
 
 .table th,
 .table td{
+<<<<<<< Updated upstream
   background-color: #292929fc;
   text-align: center;
+=======
+background-color: #292929fc;
+text-align: center;
+>>>>>>> Stashed changes
 }
