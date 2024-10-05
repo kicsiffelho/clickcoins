@@ -4,16 +4,21 @@
   "description": "Click to earn coins and spend them",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "auth0": "^4.10.0",
+    "@clerk/clerk-js": "^5.26.1",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "express-jwt": "^8.4.1",
-    "jwks-rsa": "^3.1.0"
+    "firebase": "^10.14.0",
+    "jwks-rsa": "^3.1.0",
+    "vite": "^5.4.8"
   }
 }
