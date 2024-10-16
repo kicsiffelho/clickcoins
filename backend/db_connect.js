@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURI = import.meta.env.VITE_MONGODB_URI;
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
