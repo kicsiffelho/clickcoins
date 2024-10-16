@@ -15,7 +15,7 @@ const closeModalButton = document.getElementById('close-modal');
 
 async function storeScore(score) {
     console.log('Clerk object:', window.clerk);
-    const user = clerk.user;
+    const user = await window.clerk.user.get();
     if (user) {
         const userId = user.id;
         const response = await fetch('/api/store-score', {
@@ -30,7 +30,8 @@ async function storeScore(score) {
             console.log('Score stored:', data);
         }
         else {
-            console.error('Error storing score');
+            const errorData = await response.json();
+            console.error('Error storing score:', response.status, errorData);
         }
     }
     else {
