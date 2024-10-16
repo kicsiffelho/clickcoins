@@ -30,7 +30,7 @@ async function storeScore(score) {
             console.log('Score stored:', data);
         }
         else {
-            const errorData = await response.json();
+            const errorData = await response.text();
             console.error('Error storing score:', response.status, errorData);
         }
     }
