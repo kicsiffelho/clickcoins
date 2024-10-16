@@ -130,6 +130,7 @@ function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
 
+    console.log('Clerk before storing score:', window.clerk);
     storeScore(score);
 }
 
