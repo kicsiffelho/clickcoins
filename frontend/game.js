@@ -22,6 +22,7 @@ async function storeScore(score) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.sessionId}`
             },
             body: JSON.stringify({userId, score})
         });
