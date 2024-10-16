@@ -19,6 +19,8 @@
     "express-jwt": "^8.4.1",
     "firebase": "^10.14.0",
     "jwks-rsa": "^3.1.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
     "vite": "^5.4.8"
   }
 }

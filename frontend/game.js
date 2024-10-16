@@ -13,6 +13,30 @@ const scoreModal = document.getElementById('score-modal');
 const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
+async function storeScore(score) {
+    const user = await clerk.getUser();
+    if (user) {
+        const userId = user.id;
+        const response = await fetch('/api/store-score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userId, score})
+        });
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Score stored:', data);
+        }
+        else {
+            console.error('Error storing score');
+        }
+    }
+    else {
+        console.error('User not logged in');
+    }
+}
+
 // Start game
 function startGame() {
 
@@ -104,6 +128,8 @@ function increaseDifficulty() {
 function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
+
+    storeScore(score);
 }
 
 document.getElementById('start-button').onclick = startGame;
