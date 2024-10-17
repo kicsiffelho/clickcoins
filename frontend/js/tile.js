@@ -1,47 +1,32 @@
 import { spendCurrency } from './currencyTransaction.js';
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
-import { response } from 'express';
+import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 
-export function changeBackgroundColor(color, price) {
+export async function changeBackgroundColor(color, price) {
   const user = window.clerk.user;
   if (user) {
     const userId = user.id;
-    spendCurrency(userId, price)
-      .then(async spentAmount => {
-        if (spentAmount > 0) {
-          // localStorage.setItem("background", color);
-          // location.href = "main.html";
-          await fetch('/api/background-color', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({userId, color})
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to save background color');
-            }
-          })
-          .catch(error => {
-            console.error('Error saving background color:', error);
-          });
-          const updatedAmount = await fetchCurrency(userId);
-          if (updatedAmount !== null) {
-            updateCurrencyDisplay(updatedAmount);
-          }
+    try {
+      const spentAmount = await spendCurrency(userId, price);
+      if (spentAmount > 0) {
+        await postBackgroundColor(userId, color);
+        const updatedAmount = await fetchCurrency(userId);
+        if (updatedAmount !== null) {
+          updateCurrencyDisplay(updatedAmount);
         }
-        else {
-          console.error('Not enough currency to change background color');
-        }
-      })
-      .catch(error => {
-        console.error('Error spending currency:', error);
-      });
+      }
+      else {
+        console.error('Not enough currency to change background color');
+      }
+    }
+    catch (error) {
+      console.error('Error spending currency:', error);
+    }
   }
   else {
     console.error('User not logged in');
+    return;
   }
 }
 
@@ -49,28 +34,24 @@ export async function setBackgroundColor() {
   const user = window.clerk.user;
   if (user) {
     const userId = user.id;
-    try {
-      const response = await fetch(`/api/background-color/${userId}`);
-      if (response.ok) {
-        const data = await response.json();
-        const gameArea = document.getElementById("game-area");
-        if (gameArea && data.color) {
-          gameArea.style.backgroundColor = data.color;
-          //localStorage.getItem("background", data.color);
-        }
-      }
-      else {
-        console.error('Error fetching background color:', response.status);
-      }
-    }
-    catch (error) {
-      console.error('Error fetching background color:', error);
+    const color = await fetchBackgroundColor(userId);
+    if (color) {
+      updateGameAreaBackground(color);
     }
   }
   else {
     console.error('User not logged in');
+    return;
   }
 }
+
+function updateGameAreaBackground(color) {
+  const gameArea = document.getElementById("game-area");
+  if (gameArea && color) {
+    gameArea.style.backgroundColor = color;
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
