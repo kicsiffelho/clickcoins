@@ -9,6 +9,7 @@ let coinInterval;
 let timerInterval;
 let difficultyInterval;
 let coinIntervalTime = 800;
+let currencyAmount = 0;
 
 const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
@@ -138,7 +139,10 @@ function showFinalScore() {
     });
 }
 
-document.getElementById('start-button').onclick = startGame;
+document.getElementById('start-button').onclick = function() {
+    initalizeCurrency();
+    startGame();
+}
 
 tryAgainButton.onclick = function() {
     startGame();
