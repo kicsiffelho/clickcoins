@@ -1,3 +1,8 @@
+import { storeScore } from './score.js';
+import { fetchCurrency } from './currency.js';
+import { earnCurrency } from './currencyTransaction.js';
+import { updateCurrencyDisplay } from './currencyDisplay.js';
+
 let score = 0;
 let timeLeft = 30;
 let coinInterval;
@@ -13,27 +18,10 @@ const scoreModal = document.getElementById('score-modal');
 const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
-async function storeScore(score) {
-    const user = clerk.user;
-    if (user) {
-        const userId = user.id;
-        const response = await fetch('/api/store-score', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({userId, score})
-        });
-        if (response.ok) {
-            const data = await response.json();
-            console.log('Score stored:', data);
-        }
-        else {
-            console.error('Error storing score:', error);
-        }
-    }
-    else {
-        console.error('User not logged in');
+async function initalizeCurrency() {
+    currencyAmount = await fetchCurrency(userId);
+    if (currencyAmount !== null) {
+        updateCurrencyDisplay(currencyAmount);
     }
 }
 
@@ -130,7 +118,24 @@ function showFinalScore() {
     scoreModal.style.display = 'block';
 
     console.log('Clerk before storing score:', window.clerk);
-    storeScore(score);
+
+    storeScore(score).then(() => {
+        const user = clerk.user;
+        if (user) {
+            const userId = user.id;
+            earnCurrency(userId, score)
+                .then(earnedAmount => {
+                    currencyAmount += earnedAmount;
+                    updateCurrencyDisplay(currencyAmount);
+                })
+                .catch(error => {
+                    console.error('Error earning currency:', error);
+                });
+        }
+        else {
+            console.error('User not logged in');
+        }
+    });
 }
 
 document.getElementById('start-button').onclick = startGame;
