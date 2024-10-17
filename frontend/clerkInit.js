@@ -7,7 +7,6 @@ window.clerk = clerk;
 
 async function initClerk() {
     await clerk.load();
-    console.log('Clerek initalized:', clerk);
     const userButtonDiv = document.getElementById("user-button");
     if (userButtonDiv) {
         clerk.mountUserButton(userButtonDiv);
