@@ -3,6 +3,7 @@ const router = express.Router();
 const { Currency, CurrencyTransaction } = require('../db_connect');
 
 router.post('/currency-transaction', async (req, res) => {
+    console.log('Request body: ', req.body);
     const { userId, amount, type } = req.body;
     try {
         const newTransaction = new CurrencyTransaction({ userId, amount, type });
