@@ -32,4 +32,4 @@ export async function fetchBackgroundColor(userId) {
     }
 }
 
-export {postBackgroundColor, fetchBackgroundColor}
+export { postBackgroundColor, fetchBackgroundColor };
