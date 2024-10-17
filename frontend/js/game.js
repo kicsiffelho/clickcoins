@@ -127,7 +127,7 @@ function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
 
-    if (gameInProgress) {
+    if (!gameInProgress) {
         storeScore(score).then(() => {
             const user = window.clerk.user;
             if (user) {
