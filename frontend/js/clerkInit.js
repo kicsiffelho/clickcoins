@@ -1,5 +1,5 @@
 import { Clerk } from "@clerk/clerk-js";
-import { fetchCurrency } from './currencyDisplay.js';
+import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from "./currencyDisplay.js";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
