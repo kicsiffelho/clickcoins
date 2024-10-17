@@ -20,9 +20,16 @@ const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
 async function initalizeCurrency() {
-    currencyAmount = await fetchCurrency(userId);
-    if (currencyAmount !== null) {
-        updateCurrencyDisplay(currencyAmount);
+    const user = clerk.user;
+    if (user) {
+        const userId = user.id;
+        currencyAmount = await fetchCurrency(userId);
+        if (currencyAmount !== null) {
+            updateCurrencyDisplay(currencyAmount);
+        }
+    }
+    else {
+        console.error('User not logged in');
     }
 }
 
@@ -121,7 +128,7 @@ function showFinalScore() {
     console.log('Clerk before storing score:', window.clerk);
 
     storeScore(score).then(() => {
-        const user = window.clerk.user;
+        const user = clerk.user;
         if (user) {
             const userId = user.id;
             earnCurrency(userId, score)
