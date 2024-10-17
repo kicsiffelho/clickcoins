@@ -15,5 +15,6 @@ mongoose.connect(mongoURI, {
 const Score = require('./tables/score.js');
 const Currency = require('./tables/currency.js');
 const CurrencyTransaction = require('./tables/currencyTransaction.js');
+const BackgroundColor = require('./tables/backgroundColor.js');
 
 module.exports = { mongoose, Score, Currency, CurrencyTransaction };
