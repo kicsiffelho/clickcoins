@@ -1,5 +1,6 @@
 function updateCurrencyDisplay(currencyAmount) {
     const currencyDisplay = document.getElementById('currency-display');
+    currencyDisplay.innerHTML = '';
 
     const coinImage = document.createElement('img');
     coinImage.src = new URL('../assets/coin.png', import.meta.url).href;
@@ -7,7 +8,7 @@ function updateCurrencyDisplay(currencyAmount) {
     coinImage.style.width = '40px';
     coinImage.style.height = '40px';
 
-    const amountDisplay = document.createElement('div');
+    const amountDisplay = document.createElement('span');
     amountDisplay.textContent = currencyAmount;
     amountDisplay.style.marginLeft = '20px';
 
