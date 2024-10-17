@@ -22,7 +22,7 @@ export function changeBackgroundColor(color, price) {
         }
       })
       .catch(error => {
-        console.error('Error spending currency: ', error);
+        console.error('Error spending currency:', error);
       });
   }
   else {

@@ -21,7 +21,7 @@ async function earnCurrency(userId, amount) {
 async function spendCurrency(userId, amount) {
     const response = await fetch('/api/currency-transaction', {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId: userId, amount: amount, type: 'spend' }),
@@ -30,10 +30,10 @@ async function spendCurrency(userId, amount) {
     if (response.ok) {
         const data = await response.json();
         console.log(data.message);
-        return amount;
+        return data.amount;
     }
     else {
-        console.error('Error earning currency:', response.status);
+        console.error('Error spending currency:', response.status);
         return 0;
     }
 }
