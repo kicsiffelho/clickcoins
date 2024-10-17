@@ -18,7 +18,7 @@ async function postBackgroundColor(userId, color) {
 
 async function fetchBackgroundColor(userId) {
     try {
-        const response = await fetch(`/api/background-color/${userId}`);
+        const response = await fetch(`/api/background-color?userId=${userId}`);
         if (response.ok) {
             const data = await response.json();
             return data.color;
