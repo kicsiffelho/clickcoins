@@ -2,6 +2,7 @@ import { storeScore } from './score.js';
 import { fetchCurrency } from './currency.js';
 import { earnCurrency } from './currencyTransaction.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
+import { fetchBackgroundColor } from './background.js';
 
 let score = 0;
 let timeLeft = 30;
@@ -27,6 +28,13 @@ async function initalizeCurrency() {
         currencyAmount = await fetchCurrency(userId);
         if (currencyAmount !== null) {
             updateCurrencyDisplay(currencyAmount);
+        }
+        const backgroundColor = await fetchBackgroundColor(userId);
+        if (backgroundColor) {
+            gameArea.style.backgroundColor = backgroundColor;
+        }
+        else {
+            console.log('No background color set for this user');
         }
     }
     else {
