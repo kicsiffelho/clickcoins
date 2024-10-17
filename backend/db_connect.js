@@ -17,4 +17,4 @@ const Currency = require('./tables/currency.js');
 const CurrencyTransaction = require('./tables/currencyTransaction.js');
 const BackgroundColor = require('./tables/backgroundColor.js');
 
-module.exports = { mongoose, Score, Currency, CurrencyTransaction };
+module.exports = { mongoose, Score, Currency, CurrencyTransaction, BackgroundColor };
