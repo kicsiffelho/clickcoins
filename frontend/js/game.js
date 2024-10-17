@@ -20,7 +20,7 @@ const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
 async function initalizeCurrency() {
-    const user = clerk.user;
+    const user = window.clerk.user;
     if (user) {
         const userId = user.id;
         currencyAmount = await fetchCurrency(userId);
@@ -128,7 +128,7 @@ function showFinalScore() {
     console.log('Clerk before storing score:', window.clerk);
 
     storeScore(score).then(() => {
-        const user = clerk.user;
+        const user = window.clerk.user;
         if (user) {
             const userId = user.id;
             earnCurrency(userId, score)

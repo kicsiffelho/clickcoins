@@ -5,6 +5,9 @@ const { Currency, CurrencyTransaction } = require('../db_connect');
 router.post('/currency-transaction', async (req, res) => {
     console.log('Request body: ', req.body);
     const { userId, amount, type } = req.body;
+    if (!userId || !amount || !type) {
+        return res.status(400).json({ error: 'Missing required fields: userId, amount, or type' });
+    }
     try {
         const newTransaction = new CurrencyTransaction({ userId, amount, type });
         await newTransaction.save();
