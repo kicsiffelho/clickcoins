@@ -5,9 +5,9 @@ import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 
 export async function changeBackgroundColor(color, price) {
   const user = window.clerk.user;
+  console.log(user);
   if (user) {
     const userId = user.id;
-    console.log(userId, 'changebackgroundcolor');
     try {
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
@@ -26,23 +26,23 @@ export async function changeBackgroundColor(color, price) {
     }
   }
   else {
-    console.error('User not logged in');
+    console.error('User not logged in changebg');
     return;
   }
 }
 
 export async function setBackgroundColor() {
   const user = window.clerk.user;
+  console.log(user);
   if (user) {
     const userId = user.id;
-    console.log(userId, 'setbackgroundcolor');
     const color = await fetchBackgroundColor(userId);
     if (color) {
       updateGameAreaBackground(color);
     }
   }
   else {
-    console.error('User not logged in');
+    console.error('User not logged in setbg');
     return;
   }
 }
