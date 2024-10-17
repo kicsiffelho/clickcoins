@@ -10,6 +10,7 @@ function updateCurrencyDisplay(currencyAmount) {
     const amountDisplay = document.createElement('span');
     amountDisplay.textContent = currencyAmount;
     amountDisplay.style.marginLeft = '20px';
+    currencyDisplay.innerHTML = ''
 
     currencyDisplay.appendChild(coinImage);
     currencyDisplay.appendChild(amountDisplay);
