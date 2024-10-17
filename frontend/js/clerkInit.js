@@ -18,7 +18,12 @@ async function initClerk() {
         const userId = clerk.user.id;
         try {
             const currencyAmount = await fetchCurrency(userId);
-            updateCurrencyDisplay(currencyAmount);
+            if (currencyAmount !== null) {
+                updateCurrencyDisplay(currencyAmount);
+            }
+            else {
+                console.error('Fetched currency amount is null');
+            }
         }
         catch (error) {
             console.error('Error fetching currency:', error);
