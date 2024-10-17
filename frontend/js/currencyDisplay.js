@@ -1,6 +1,5 @@
 function updateCurrencyDisplay(currencyAmount) {
     const currencyDisplay = document.getElementById('currency-display');
-    currencyDisplay.innerHTML = '';
 
     const coinImage = document.createElement('img');
     coinImage.src = new URL('../assets/coin.png', import.meta.url).href;
