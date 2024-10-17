@@ -127,25 +127,25 @@ function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
 
-    if (!gameInProgress) return;
-
-    storeScore(score).then(() => {
-        const user = window.clerk.user;
-        if (user) {
-            const userId = user.id;
-            earnCurrency(userId, score)
-                .then(earnedAmount => {
-                    currencyAmount += earnedAmount;
-                    updateCurrencyDisplay(currencyAmount);
-                })
-                .catch(error => {
-                    console.error('Error earning currency:', error);
-                });
-        }
-        else {
-            console.error('User not logged in');
-        }
-    });
+    if (gameInProgress) {
+        storeScore(score).then(() => {
+            const user = window.clerk.user;
+            if (user) {
+                const userId = user.id;
+                earnCurrency(userId, score)
+                    .then(earnedAmount => {
+                        currencyAmount += earnedAmount;
+                        updateCurrencyDisplay(currencyAmount);
+                    })
+                    .catch(error => {
+                        console.error('Error earning currency:', error);
+                    });
+            }
+            else {
+                console.error('User not logged in');
+            }
+        });
+    }
 }
 
 document.getElementById('start-button').onclick = function() {
