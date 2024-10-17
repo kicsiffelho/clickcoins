@@ -10,6 +10,7 @@ let timerInterval;
 let difficultyInterval;
 let coinIntervalTime = 800;
 let currencyAmount = 0;
+let gameInProgress = false;
 
 const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
@@ -35,7 +36,7 @@ async function initalizeCurrency() {
 
 // Start game
 function startGame() {
-
+    gameInProgress = true;
     // Reset score and timer
     score = 0;
     timeLeft = 30;
@@ -109,6 +110,7 @@ function updateTimer() {
         clearInterval(coinInterval);
         clearInterval(timerInterval);
         clearInterval(difficultyInterval);
+        gameInProgress = false;
         showFinalScore();
     }
 }
@@ -124,6 +126,8 @@ function increaseDifficulty() {
 function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
+
+    if (!gameInProgress) return;
 
     storeScore(score).then(() => {
         const user = window.clerk.user;

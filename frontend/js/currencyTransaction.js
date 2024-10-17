@@ -30,7 +30,7 @@ async function spendCurrency(userId, amount) {
     if (response.ok) {
         const data = await response.json();
         console.log(data.message);
-        return data.amount;
+        return amount;
     }
     else {
         console.error('Error spending currency:', response.status);

@@ -13,17 +13,26 @@ router.post('/currency-transaction', async (req, res) => {
         await newTransaction.save();
 
         let userCurrency = await Currency.findOne({ userId });
-        if (userCurrency) {
-            userCurrency.amount += (type === 'earn' ? amount: -amount);
-            await userCurrency.save();
+        if (type === 'spend') {
+            if (!userCurrency || userCurrency.amount < amount) {
+                return res.status(400).json({ error: 'Not enough currency to spend' });
+            }
+            else {
+                userCurrency.amount -= amount;
+            }
         }
         else {
-            const newCurrency = new Currency({
-                userId,
-                amount: type === 'earn' ? amount: -amount
-            });
-            await newCurrency.save();
+            if (userCurrency) {
+                userCurrency.amount += amount;
+            }
+            else {
+                userCurrency = new Currency({
+                    userId,
+                    amount
+                });
+            }
         }
+        await userCurrency.save();
         res.json({ message: 'Transaction recorded and currency updated successfully' });
     }
     catch (error) {

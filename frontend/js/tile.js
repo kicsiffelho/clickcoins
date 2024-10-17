@@ -3,7 +3,7 @@ import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
 
 export function changeBackgroundColor(color, price) {
-  const user = clerk.user;
+  const user = window.clerk.user;
   if (user) {
     const userId = user.id;
     spendCurrency(userId, price)
