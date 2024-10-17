@@ -1,4 +1,6 @@
 import { Clerk } from "@clerk/clerk-js";
+import { fetchCurrency } from './currencyDisplay.js';
+import { updateCurrencyDisplay } from "./currencyDisplay.js";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);
@@ -10,6 +12,17 @@ async function initClerk() {
     const userButtonDiv = document.getElementById("user-button");
     if (userButtonDiv) {
         clerk.mountUserButton(userButtonDiv);
+    }
+
+    if (clerk.user) {
+        const userId = clerk.user.id;
+        try {
+            const currencyAmount = await fetchCurrency(userId);
+            updateCurrencyDisplay(currencyAmount);
+        }
+        catch (error) {
+            console.error('Error fetching currency:', error);
+        }
     }
 }
 

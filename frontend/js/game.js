@@ -125,16 +125,12 @@ function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
 
-    console.log('Clerk before storing score:', window.clerk);
-
     storeScore(score).then(() => {
         const user = window.clerk.user;
         if (user) {
             const userId = user.id;
-            console.log('User ID:', userId);
             earnCurrency(userId, score)
                 .then(earnedAmount => {
-                    console.log('Currency earned:', earnedAmount);
                     currencyAmount += earnedAmount;
                     updateCurrencyDisplay(currencyAmount);
                 })
