@@ -1,4 +1,4 @@
-export async function postBackgroundColor(userId, color) {
+async function postBackgroundColor(userId, color) {
     try {
         const response = await fetch('/api/background-color', {
             method: 'POST',
@@ -16,7 +16,7 @@ export async function postBackgroundColor(userId, color) {
     }
 }
 
-export async function fetchBackgroundColor(userId) {
+async function fetchBackgroundColor(userId) {
     try {
         const response = await fetch(`/api/background-color/${userId}`);
         if (response.ok) {
