@@ -131,8 +131,10 @@ function showFinalScore() {
         const user = window.clerk.user;
         if (user) {
             const userId = user.id;
+            console.log('User ID:', userId);
             earnCurrency(userId, score)
                 .then(earnedAmount => {
+                    console.log('Currency earned:', earnedAmount);
                     currencyAmount += earnedAmount;
                     updateCurrencyDisplay(currencyAmount);
                 })

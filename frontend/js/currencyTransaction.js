@@ -1,7 +1,7 @@
 async function earnCurrency(userId, amount) {
     const response = await fetch('/api/currency-transaction', {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ userId: userId, amount: amount, type: 'earn' }),
