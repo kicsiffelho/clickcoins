@@ -12,7 +12,6 @@ mongoose.connect(mongoURI, {
     console.error('Error conecting to MongoDB', err);
 });
 
-const db = mongoose.connection.useDb('clickcoins_db');
 const Score = require('./tables/score.js');
 
 module.exports = { mongoose, Score };

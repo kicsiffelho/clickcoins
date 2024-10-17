@@ -8,11 +8,9 @@ router.post('/store-score', async (req, res) => {
     try {
         await newScore.save();
         console.log('Score added');
-        res.status(200).json({ message: 'Score stored successfully' });
     }
     catch (error) {
         console.error('Error adding score:', error);
-        res.status(500).json({ message: 'Error adding score' });
     }
 });
 

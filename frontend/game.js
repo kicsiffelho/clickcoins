@@ -14,7 +14,6 @@ const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
 async function storeScore(score) {
-    console.log('Clerk object:', window.clerk);
     const user = clerk.user;
     if (user) {
         const userId = user.id;
@@ -30,8 +29,7 @@ async function storeScore(score) {
             console.log('Score stored:', data);
         }
         else {
-            const errorData = await response.text();
-            console.error('Error storing score:', response.status, errorData);
+            console.error('Error storing score:', error);
         }
     }
     else {
