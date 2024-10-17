@@ -1,5 +1,5 @@
 function updateCurrencyDisplay(currencyAmount) {
-    document.getElementById('currency-display').textContent = currencyAmount;
+    const currencyDisplay = document.getElementById('currency-display').textContent = currencyAmount;
     currencyDisplay.innerHTML = '';
 
     const coinImage = document.createElement('img');

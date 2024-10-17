@@ -121,7 +121,7 @@ function showFinalScore() {
     console.log('Clerk before storing score:', window.clerk);
 
     storeScore(score).then(() => {
-        const user = clerk.user;
+        const user = window.clerk.user;
         if (user) {
             const userId = user.id;
             earnCurrency(userId, score)
