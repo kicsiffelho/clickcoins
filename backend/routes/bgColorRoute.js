@@ -16,7 +16,7 @@ router.post('/background-color', async (req, res) => {
 });
 
 router.get('/background-color', async (req, res) => {
-    const { userId } = res.query;
+    const { userId } = req.query;
     if (!userId) {
         return res.status(400).json({ error: 'Missing userId' });
     }

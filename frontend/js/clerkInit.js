@@ -1,6 +1,7 @@
 import { Clerk } from "@clerk/clerk-js";
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from "./currencyDisplay.js";
+import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);

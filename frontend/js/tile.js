@@ -4,7 +4,7 @@ import { updateCurrencyDisplay } from './currencyDisplay.js';
 import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 
 export async function changeBackgroundColor(color, price) {
-  const user = clerk.user;
+  const user = window.clerk.user;
   console.log(user);
   if (user) {
     const userId = user.id;
@@ -32,7 +32,7 @@ export async function changeBackgroundColor(color, price) {
 }
 
 export async function setBackgroundColor() {
-  const user = clerk.user;
+  const user = window.clerk.user;
   console.log(user);
   if (user) {
     const userId = user.id;
