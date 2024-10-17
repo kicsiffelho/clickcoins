@@ -4,7 +4,7 @@ async function earnCurrency(userId, amount) {
         header: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId, amount, type: 'earn' }),
+        body: JSON.stringify({ userId: userId, amount: amount, type: 'earn' }),
     });
 
     if (response.ok) {
@@ -24,7 +24,7 @@ async function spendCurrency(userId, amount) {
         header: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId, amount, type: 'spend' }),
+        body: JSON.stringify({ userId: userId, amount: amount, type: 'spend' }),
     });
 
     if (response.ok) {
