@@ -10,7 +10,7 @@ async function postBackgroundColor(userId, color) {
             body: JSON.stringify({ userId, color })
         });
         const data = await response.json();
-        updateToChangeColor(color);
+        updateToChangeColor(color, owned);
         console.log('Color action:', data.message);;
     }
     catch (error) {
