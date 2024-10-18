@@ -5,9 +5,13 @@ const { BackgroundColor } = require('../db_connect');
 router.post('/background-color', async (req, res) => {
     const { userId, color } = req.body;
     try {
+        const ownedColor = await BackgroundColor.findOne({userId, color});
+        if (ownedColor) {
+            return res.json({message: 'You already own this color!', owned: true});
+        }
         const newBackgroundColor = new BackgroundColor({userId, color});
         await newBackgroundColor.save();
-        res.json({message: 'Background color saved successfully'});
+        res.json({message: 'Background color saved successfully', owned: false});
     }
     catch (error) {
         console.error('Error saving background color:', error);

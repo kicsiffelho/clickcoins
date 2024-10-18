@@ -1,3 +1,5 @@
+import { changeBackgroundColor } from "./tile";
+
 async function postBackgroundColor(userId, color) {
     try {
         const response = await fetch('/api/background-color', {
@@ -7,8 +9,14 @@ async function postBackgroundColor(userId, color) {
             },
             body: JSON.stringify({ userId, color })
         });
-        if (!response.ok) {
-            throw new Error('Failed to save background color');
+        const data = await response.json();
+        if (data.owned) {
+            updateToChangeColor(color);
+            console.log('You already own this color');
+        }
+        else {
+            updateToChangeColor(color);
+            console.log('Color purchased');
         }
     }
     catch (error) {
@@ -32,4 +40,24 @@ async function fetchBackgroundColor(userId) {
     }
 }
 
-export { postBackgroundColor, fetchBackgroundColor };
+const colorMap = {
+    '#00a3e9': 'bgBlue',
+    '#b97b56': 'bgBrown',
+    '#7b0103': 'bgCrimson',
+    '#22b14c': 'bgGreen',
+    '#7f7f7f': 'bgGrey',
+    '#fc6a03': 'bgOrange',
+    '#eb3780': 'bgPink',
+    '#ed1d25': 'bgRed'
+}
+
+async function updateToChangeColor(color) {
+    const buttonId = colorMap[color];
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.textContent = "Change";
+        button.onclick = () => changeBackgroundColor(color);
+    }
+}
+
+export { postBackgroundColor, fetchBackgroundColor, updateToChangeColor };

@@ -1,7 +1,7 @@
 import { spendCurrency } from './currencyTransaction.js';
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
-import { postBackgroundColor, fetchBackgroundColor } from './background.js';
+import { postBackgroundColor, fetchBackgroundColor, updateToChangeColor } from './background.js';
 
 export async function changeBackgroundColor(color, price) {
   const user = window.clerk.user;
@@ -9,6 +9,11 @@ export async function changeBackgroundColor(color, price) {
   if (user) {
     const userId = user.id;
     try {
+      const ownedColor = await fetchBackgroundColor(userId);
+      if (ownedColor === color) {
+        updateGameAreaBackground(color);
+        updateToChangeColor(color);
+      }
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
         await postBackgroundColor(userId, color);
@@ -16,6 +21,7 @@ export async function changeBackgroundColor(color, price) {
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
         }
+        updateToChangeColor(color);
       }
       else {
         console.error('Not enough currency to change background color');
