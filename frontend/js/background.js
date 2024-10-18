@@ -78,4 +78,4 @@ async function checkColorOwned(userId, color) {
     }
 }
 
-export { postBackgroundColor, fetchBackgroundColor, updateToChangeColor };
+export { postBackgroundColor, fetchBackgroundColor, updateToChangeColor, checkColorOwned };
