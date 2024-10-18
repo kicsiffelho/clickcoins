@@ -10,14 +10,8 @@ async function postBackgroundColor(userId, color) {
             body: JSON.stringify({ userId, color })
         });
         const data = await response.json();
-        if (data.owned) {
-            updateToChangeColor(color, data.owned);
-            console.log('You already own this color');
-        }
-        else {
-            updateToChangeColor(color, data.owned);
-            console.log('Color purchased');
-        }
+        updateToChangeColor(color);
+        console.log('Color action:', data.message);;
     }
     catch (error) {
         console.error('Error saving background color:', error);
@@ -51,7 +45,7 @@ const colorMap = {
     '#ed1d25': 'bgRed'
 }
 
-async function updateToChangeColor(color, owned) {
+async function updateToChangeColor(color) {
     const buttonId = colorMap[color];
     const button = document.getElementById(buttonId);
     if (button) {
@@ -61,8 +55,26 @@ async function updateToChangeColor(color, owned) {
         }
         else {
             button.textContent = "Add";
-            button.onclick = null;
+            button.onclick = () => changeBackgroundColor(color);
         }
+    }
+}
+
+async function checkColorOwned(userId, color) {
+    try {
+        const response = await fetch(`/api/background-color/${userId}/${color}`);
+        if (response.ok) {
+            const data = await response.json();
+            return data.owned;
+        }
+        else {
+            console.error('Error checking color ownership:', response.status);
+            return false;
+        }
+    }
+    catch (error) {
+        console.error('Error checking color ownership:', error);
+        return false;
     }
 }
 

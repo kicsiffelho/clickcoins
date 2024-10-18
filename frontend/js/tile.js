@@ -9,10 +9,10 @@ export async function changeBackgroundColor(color, price) {
   if (user) {
     const userId = user.id;
     try {
-      const ownedColor = await fetchBackgroundColor(userId);
-      if (ownedColor === color) {
+      const owned = await checkColorOwned(userId, color);
+      if (owned) {
         updateGameAreaBackground(color);
-        updateToChangeColor(color, true);
+        updateToChangeColor(color);
         return;
       }
       const spentAmount = await spendCurrency(userId, price);
@@ -22,7 +22,7 @@ export async function changeBackgroundColor(color, price) {
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
         }
-        updateToChangeColor(color, false);
+        updateToChangeColor(color);
       }
       else {
         console.error('Not enough currency to change background color');

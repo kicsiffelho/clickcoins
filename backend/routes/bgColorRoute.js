@@ -5,13 +5,9 @@ const { BackgroundColor } = require('../db_connect');
 router.post('/background-color', async (req, res) => {
     const { userId, color } = req.body;
     try {
-        const ownedColor = await BackgroundColor.findOne({userId, color});
-        if (ownedColor) {
-            return res.json({message: 'You already own this color!', owned: true});
-        }
         const newBackgroundColor = new BackgroundColor({userId, color});
         await newBackgroundColor.save();
-        res.json({message: 'Background color saved successfully', owned: false});
+        res.json({message: 'Background color saved successfully'});
     }
     catch (error) {
         console.error('Error saving background color:', error);
@@ -36,6 +32,25 @@ router.get('/background-color/:userId', async (req, res) => {
     catch (error) {
         console.error('Error fetching background color:', error);
         res.status(500).json({ error: 'Server error while fetching background color' });
+    }
+});
+
+router.get('/background-color/:userId/:color', async (req, res) => {
+    const { userId, color } = req.params;
+    if (!userId || !color) {
+        return res.status(400).json({ error: 'Missing userId or color' });
+    }
+    try {
+        const ownedColor = await BackgroundColor.findOne({ userId, color });
+        if (ownedColor) {
+            return res.json({ owned: true });
+        } else {
+            return res.json({ owned: false });
+        }
+    }
+    catch (error) {
+        console.error('Error checking color ownership:', error);
+        res.status(500).json({ error: 'Server error while checking color ownership' });
     }
 });
 
