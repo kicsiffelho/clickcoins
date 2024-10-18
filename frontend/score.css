@@ -15,24 +15,61 @@ body {
   overflow: hidden;
 }
 
-.table th{
-font-size: 1.1rem;
+.table th {
+  font-size: 1.1rem;
 }
 
 .table th,
-.table td{
+.table td {
   text-align: center;
   background-color: #292929fc;
 }
 
-footer{
+footer {
   margin-top: auto;
   position: relative;
   height: 23vh;
   background-color: #222222;
-  }
-  
-  .table2 td{
-    padding: 0;
+}
+
+.table2 td {
+  padding: 0;
   background-color: #222222;
+}
+
+@media (max-width: 992px) {
+  #currency-display {
+    padding: 0;
+    align-items: center;
   }
+
+  #coin-image {
+    width: 28px;
+    height: 28px;
+    margin-left: 0 !important;
+    margin: 8px;
+  }
+
+  #user-button {
+    padding-top: 8px;
+    margin: 0 !important;
+  }
+}
+#currency-display {
+  padding: 0;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+#coin-image {
+  width: 28px;
+  height: 28px;
+  margin-left: 0 !important;
+  margin: 8px;
+}
+
+#user-button {
+  margin-left: 12px;
+}

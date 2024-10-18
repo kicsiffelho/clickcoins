@@ -1,9 +1,17 @@
+import { storeScore } from './score.js';
+import { fetchCurrency } from './currency.js';
+import { earnCurrency } from './currencyTransaction.js';
+import { updateCurrencyDisplay } from './currencyDisplay.js';
+import { fetchBackgroundColor } from './background.js';
+
 let score = 0;
 let timeLeft = 30;
 let coinInterval;
 let timerInterval;
 let difficultyInterval;
 let coinIntervalTime = 800;
+let currencyAmount = 0;
+let gameInProgress = false;
 
 const gameArea = document.getElementById('game-area');
 const scoreDisplay = document.getElementById('score');
@@ -13,9 +21,30 @@ const scoreModal = document.getElementById('score-modal');
 const tryAgainButton = document.getElementById('try-again-button');
 const closeModalButton = document.getElementById('close-modal');
 
+async function initalizeCurrency() {
+    const user = window.clerk.user;
+    if (user) {
+        const userId = user.id;
+        currencyAmount = await fetchCurrency(userId);
+        if (currencyAmount !== null) {
+            updateCurrencyDisplay(currencyAmount);
+        }
+        const backgroundColor = await fetchBackgroundColor(userId);
+        if (backgroundColor) {
+            gameArea.style.backgroundColor = backgroundColor;
+        }
+        else {
+            console.log('No background color set for this user');
+        }
+    }
+    else {
+        console.error('User not logged in');
+    }
+}
+
 // Start game
 function startGame() {
-
+    gameInProgress = true;
     // Reset score and timer
     score = 0;
     timeLeft = 30;
@@ -56,7 +85,7 @@ function createCoin() {
     if (timeLeft <= 0) return;
 
     const coin = document.createElement('img');
-    coin.src = new URL('./assets/coin.png', import.meta.url).href;
+    coin.src = new URL('../assets/coin.png', import.meta.url).href;
     coin.classList.add('coin');
     const { x, y } = generateRandomPosition();
     coin.style.left = `${x}px`;
@@ -89,6 +118,7 @@ function updateTimer() {
         clearInterval(coinInterval);
         clearInterval(timerInterval);
         clearInterval(difficultyInterval);
+        gameInProgress = false;
         showFinalScore();
     }
 }
@@ -104,9 +134,32 @@ function increaseDifficulty() {
 function showFinalScore() {
     document.getElementById('final-score').textContent = `Final score: ${score}`;
     scoreModal.style.display = 'block';
+
+    if (!gameInProgress) {
+        storeScore(score).then(() => {
+            const user = window.clerk.user;
+            if (user) {
+                const userId = user.id;
+                earnCurrency(userId, score)
+                    .then(earnedAmount => {
+                        currencyAmount += earnedAmount;
+                        updateCurrencyDisplay(currencyAmount);
+                    })
+                    .catch(error => {
+                        console.error('Error earning currency:', error);
+                    });
+            }
+            else {
+                console.error('User not logged in');
+            }
+        });
+    }
 }
 
-document.getElementById('start-button').onclick = startGame;
+document.getElementById('start-button').onclick = function() {
+    initalizeCurrency();
+    startGame();
+}
 
 tryAgainButton.onclick = function() {
     startGame();

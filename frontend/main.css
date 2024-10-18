@@ -23,7 +23,7 @@ body {
   position: relative;
   overflow: hidden;
   display: none;
-  border: 2px solid #7c5cc4;
+  border: 2px solid #403d77;
   width: 70vw;
   height: 70vh;
   margin: 0 auto;
@@ -34,7 +34,7 @@ body {
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
-  background-color: #7c5cc4;
+  background-color: #403d77;
   border: 2px solid #280003;
   color: white;
   border-radius: 20px;
@@ -46,7 +46,8 @@ body {
   position: absolute;
 }
 
-#score, #timer {
+#score,
+#timer {
   color: whitesmoke;
   display: none;
 }
@@ -59,7 +60,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: none;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
@@ -67,7 +68,7 @@ body {
 }
 
 .modal-content {
-  background-color: #7c5cc4;
+  background-color: #403d77;
   border: 1px solid #280003;
   color: whitesmoke;
   margin: 15% auto;
@@ -99,4 +100,40 @@ body {
   #try-again-button {
     padding: 5px;
   }
+}
+@media (max-width: 992px) {
+  #currency-display {
+    padding: 0;
+    align-items: center;
+  }
+
+  #coin-image {
+    width: 28px;
+    height: 28px;
+    margin-left: 0 !important;
+    margin: 8px;
+  }
+
+  #user-button {
+    padding-top: 8px;
+    margin: 0 !important;
+  }
+}
+#currency-display {
+  padding: 0;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+#coin-image {
+  width: 28px;
+  height: 28px;
+  margin-left: 0 !important;
+  margin: 8px;
+}
+
+#user-button {
+  margin-left: 12px;
 }
