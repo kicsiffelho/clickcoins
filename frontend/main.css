@@ -122,6 +122,9 @@ body {
 #currency-display {
   padding: 0;
   align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
 
 #coin-image {

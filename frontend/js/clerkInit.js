@@ -4,7 +4,7 @@ import { updateCurrencyDisplay } from "./currencyDisplay.js";
 import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 import { shadesOfPurple } from '@clerk/themes';
 
-const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const clerkPubKey = 'pk_test_Y29oZXJlbnQtcGVnYXN1cy04MS5jbGVyay5hY2NvdW50cy5kZXYk';
 const clerk = new Clerk(clerkPubKey);
 
 window.clerk = clerk;
