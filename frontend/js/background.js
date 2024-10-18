@@ -45,7 +45,7 @@ const colorMap = {
     '#ed1d25': 'bgRed'
 }
 
-async function updateToChangeColor(color) {
+async function updateToChangeColor(color, owned) {
     const buttonId = colorMap[color];
     const button = document.getElementById(buttonId);
     if (button) {
