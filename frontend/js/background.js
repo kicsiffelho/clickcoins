@@ -11,11 +11,11 @@ async function postBackgroundColor(userId, color) {
         });
         const data = await response.json();
         if (data.owned) {
-            updateToChangeColor(color);
+            updateToChangeColor(color, data.owned);
             console.log('You already own this color');
         }
         else {
-            updateToChangeColor(color);
+            updateToChangeColor(color, data.owned);
             console.log('Color purchased');
         }
     }
@@ -51,12 +51,18 @@ const colorMap = {
     '#ed1d25': 'bgRed'
 }
 
-async function updateToChangeColor(color) {
+async function updateToChangeColor(color, owned) {
     const buttonId = colorMap[color];
     const button = document.getElementById(buttonId);
     if (button) {
-        button.textContent = "Change";
-        button.onclick = () => changeBackgroundColor(color);
+        if (owned) {
+            button.textContent = "Change";
+            button.onclick = () => changeBackgroundColor(color);
+        }
+        else {
+            button.textContent = "Add";
+            button.onclick = null;
+        }
     }
 }
 

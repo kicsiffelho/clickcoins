@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const backgroundColorSchema = new mongoose.Schema({
     userId: { type: String, required: true },
     color: { type: String, required: true },
+    owned: { type: Boolean, default: true },
     timestamp: { type: Date, default: Date.now}
 });
 
