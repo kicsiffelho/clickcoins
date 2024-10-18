@@ -1,4 +1,5 @@
 import { Clerk } from "@clerk/clerk-js";
+import { dark, shadesOfPurple } from '@clerk/themes';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);
@@ -11,7 +12,11 @@ async function initClerk() {
     } else {
         document.getElementById("app").innerHTML = `<div id="sign-in"></div>`;
         const signInDiv = document.getElementById("sign-in");
-        clerk.mountSignIn(signInDiv);
+        clerk.mountSignIn(signInDiv, {
+            appearance: {
+                baseTheme: shadesOfPurple
+            }
+        });
     }
 
     const userButtonDiv = document.createElement('div');

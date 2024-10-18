@@ -26,7 +26,7 @@ router.get('/background-color/:userId', async (req, res) => {
             return res.json({ color: backgroundColor.color });
         }
         else {
-            return res.json({ color: '#7c5cc4' });
+            return res.json({ color: '#353535fc' });
         }
     }
     catch (error) {

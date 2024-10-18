@@ -1,1 +1,0 @@
-import{N as t}from"./clerk-UcEcY9Me.js";var i={};const o=i.VITE_CLERK_PUBLISHABLE_KEY,n=new t(o);async function d(){await n.load(),document.getElementById("app").innerHTML='<div id="sign-up"></div>';const e=document.getElementById("sign-up");n.mountSignUp(e)}document.addEventListener("DOMContentLoaded",()=>{d().catch(e=>{console.error("Failed to initialize Clerk:",e)})});
