@@ -5,7 +5,7 @@ body {
 
 header {
   height: 18vh;
-  background: linear-gradient(#2c2231, #710d9c);
+  background: linear-gradient(#2c2231, #403D77);
 }
 
 .custom-container {
@@ -22,7 +22,7 @@ header {
 }
 
 .btn-secondary {
-  background-color: #710d9c;
+  background-color: #403D77;
   border: none;
 }
 
