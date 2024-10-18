@@ -1,1 +1,0 @@
-import{N as t}from"./clerk-BlvBUZtz.js";const i=void 0;async function o(){const n=new t(i);await n.load(),document.getElementById("app").innerHTML='<div id="sign-up"></div>';const e=document.getElementById("sign-up");n.mountSignUp(e)}document.addEventListener("DOMContentLoaded",()=>{o().catch(n=>{console.error("Failed to initialize Clerk:",n)})});

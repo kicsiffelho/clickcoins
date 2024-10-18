@@ -12,9 +12,9 @@
             crossorigin="anonymous"
         >
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script type="module" crossorigin src="/assets/clerk-BlvBUZtz.js"></script>
-      <script type="module" crossorigin src="/assets/tile-l0sNRNKZ.js"></script>
-      <script type="module" crossorigin src="/assets/clerkInit-Qi1M2mCM.js"></script>
+      <script type="module" crossorigin src="/assets/clerk-UcEcY9Me.js"></script>
+      <script type="module" crossorigin src="/assets/clerkInit-DWrb5_7i.js"></script>
+      <script type="module" crossorigin src="/assets/tile-CxQaLQnt.js"></script>
       <link rel="stylesheet" crossorigin href="/assets/store-DOwenA6u.css">
     </head>
     <body>
@@ -56,6 +56,7 @@
                         </span>
                     </div>
                     <div class="navbar-nav ms-lg-auto">
+                        <div id="currency-display" class="navbar-text mx-3" style="color: #ffc107;">0</div>
                         <div id="user-button"></div>
                     </div>
                 </div>
@@ -77,13 +78,13 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAJnSURBVHhe7dQxAYBAEMCwA/8qUIcLWF7CdUuWOug1z/sNAKvuUwAWmStAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwB1s38r74D4cTu+2QAAAAASUVORK5CYII=" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h5 class="fw-bolder">Ocean Blue</h5>
                                     10 Coin
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#00A2E8')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgBlue">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +97,7 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJoSURBVHhe7dQxAYAADMCwgUm84Ax18CBh/ZKnDno89/UOAKvOvwAsMleAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCrJv5ALEIA+GjJJ2QAAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Special Item</h5>
+                                    <h5 class="fw-bolder">Oak Brown</h5>
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
@@ -110,7 +111,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#B97A57')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgBrown">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -123,14 +124,14 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJlSURBVHhe7dSxAYAwDMCw0Ld7PCycEG/S4g/83DnvALDq/AVgkbkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVYN3MByYmAtR/RJ7rAAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Sale Item</h5>
+                                    <h5 class="fw-bolder">Fancy Ruby</h5>
                                     <span class="text-muted text-decoration-line-through">30 Coin</span>
                                     50 Coin
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#7B0002')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgCrimson">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +141,7 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAJoSURBVHhe7dQxAYAADMCwgRT0YBaF8CBh/ZKnDnpcz/0OAKvOvwAsMleAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCrJv5AAjvA3bBbYWnAAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Popular Item</h5>
+                                    <h5 class="fw-bolder">Grass Green</h5>
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
@@ -153,7 +154,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#22B14C')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgGreen">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -166,14 +167,14 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJlSURBVHhe7dSxAYAwDMCwwuM5vSycEG/S4g/8zMw9AKx6/wKwyFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKEDBXgIC5AgTMFSBgrgABcwUImCtAwFwBAuYKsO6cD9WzA9TrCcu3AAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Sale Item</h5>
+                                    <h5 class="fw-bolder">Moon Grey</h5>
                                     <span class="text-muted text-decoration-line-through">20 Coin</span>
                                     60 Coin
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#7F7F7F')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgGrey">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -183,13 +184,13 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJnSURBVHhe7dSxDYAADMCwAt/y/4gECyc0m73kgxzPfb0DwKrzLwCLzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4AAXMFCJgrQMBcAQLmChAwV4CAuQIEzBUgYK4A62Y+wOwDwK0AnioAAAAASUVORK5CYII=" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h5 class="fw-bolder">Sunset Ember</h5>
                                     150 Coin
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#FC6A03')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgOrange">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +203,7 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJoSURBVHhe7dQxAYAADMCwgSj0oRcT8CBh/ZKnDno81/0OAKvOvwAsMleAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCrJv5APwtA/fcKgwmAAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Special Item</h5>
+                                    <h5 class="fw-bolder">Barbie Pink</h5>
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
@@ -216,7 +217,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#EA3680')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgPink">Add</a>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +227,7 @@
                             <img class="card-img-top" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAACsCAYAAADPE+92AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJoSURBVHhe7dQxAYAADMCwgQ5O/DtDAzxIWL/kqYMez3W/A8Cq8y8Ai8wVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAAFzBQiYK0DAXAEC5goQMFeAgLkCBMwVIGCuAOtmPn98A4Qr01LQAAAAAElFTkSuQmCC" alt="...">
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">Popular Item</h5>
+                                    <h5 class="fw-bolder">Cherry Red</h5>
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
                                         <div class="bi-star-fill"></div>
@@ -239,7 +240,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-secondary mt-auto" href="#" onclick="changeBackgroundColor('#ED1C24')">Add</a>
+                                    <a class="btn btn-secondary mt-auto" href="#" id="bgRed">Add</a>
                                 </div>
                             </div>
                         </div>
