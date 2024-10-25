@@ -22,7 +22,6 @@ async function initClerk() {
 
     if (clerk.user) {
         const userId = clerk.user.id;
-        window.userId = userId;
         try {
             const currencyAmount = await fetchCurrency(userId);
             if (currencyAmount !== null) {

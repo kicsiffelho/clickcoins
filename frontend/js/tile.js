@@ -99,30 +99,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   setBackgroundColor();
 });
-
-
-async function updateButtons(userId) {
-  try {
-      const response = await fetch(`/api/user-backgrounds/${userId}`);
-      const ownedBackgrounds = await response.json();
-
-      document.querySelectorAll('.btn-secondary').forEach(button => {
-          const buttonId = button.getAttribute('id');
-          if (ownedBackgrounds.includes(buttonId)) {
-              button.textContent = 'Owned';
-              button.classList.replace('btn-secondary', 'btn-success');
-              button.setAttribute('disabled', true);
-          }
-      });
-  } catch (error) {
-      console.error('Error fetching user backgrounds:', error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.userId) {
-      updateButtons(window.userId);
-  } else {
-      console.error('User ID not available');
-  }
-});
