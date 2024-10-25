@@ -5,19 +5,15 @@ const { BackgroundColor } = require('../db_connect');
 router.post('/background-color', async (req, res) => {
     const { userId, color } = req.body;
     try {
-        await BackgroundColor.findOneAndUpdate(
-            { userId },
-            { $addToSet: { colors: color } },  // Új szín hozzáadása a tömbhöz, ha még nincs
-            { upsert: true }  // Létrehozza a dokumentumot, ha nem létezik
-        );
-        res.json({ message: 'Background color saved successfully' });
+        const newBackgroundColor = new BackgroundColor({userId, color});
+        await newBackgroundColor.save();
+        res.json({message: 'Background color saved successfully'});
     }
     catch (error) {
         console.error('Error saving background color:', error);
         res.status(500).json({ error: 'Server error while saving background color' });
     }
 });
-
 
 router.get('/background-color/:userId', async (req, res) => {
     const { userId } = req.params;
