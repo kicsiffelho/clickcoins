@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setBackgroundColor();
 });
 
-
 async function updateButtons(userId) {
   try {
       const response = await fetch(`/api/user-backgrounds/${userId}`);
@@ -112,6 +111,8 @@ async function updateButtons(userId) {
               button.textContent = 'Owned';
               button.classList.replace('btn-secondary', 'btn-success');
               button.setAttribute('disabled', true);
+          } else {
+              button.addEventListener('click', () => handlePurchase(buttonId, userId));
           }
       });
   } catch (error) {
@@ -119,10 +120,33 @@ async function updateButtons(userId) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+async function handlePurchase(buttonId, userId) {
+  try {
+      const purchaseResponse = await fetch(`/api/purchase-background/${userId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ backgroundId: buttonId })
+      });
+
+      if (purchaseResponse.ok) {
+          const button = document.getElementById(buttonId);
+          button.textContent = 'Owned';
+          button.classList.replace('btn-secondary', 'btn-success');
+          button.setAttribute('disabled', true);
+      } else {
+          console.error('Purchase failed or item already owned.');
+      }
+  } catch (error) {
+      console.error('Error during purchase:', error);
+  }
+}
+
+function waitForUserId() {
   if (window.userId) {
       updateButtons(window.userId);
   } else {
-      console.error('User ID not available');
+      setTimeout(waitForUserId, 100);
   }
-});
+}
+
+document.addEventListener('DOMContentLoaded', waitForUserId);
