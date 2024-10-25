@@ -35,4 +35,16 @@ router.get('/background-color/:userId', async (req, res) => {
     }
 });
 
+router.get('/api/user-backgrounds/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const userBackgrounds = await BackgroundColor.findOne({ userId });
+        res.json(userBackgrounds ? userBackgrounds.backgrounds : []);
+    } catch (error) {
+        console.error('Error fetching user backgrounds:', error);
+        res.status(500).json({ message: 'Error fetching user backgrounds' });
+    }
+});
+
+
 module.exports = router;
