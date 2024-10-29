@@ -4,6 +4,7 @@ const scoreRoute = require('./routes/scoreRoute');
 const currencyRoute = require('./routes/currencyRoute');
 const bgColorRoute = require('./routes/bgColorRoute');
 const cors = require('cors');
+require('./db_connect');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
