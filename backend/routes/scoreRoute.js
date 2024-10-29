@@ -16,4 +16,20 @@ router.post('/store-score', async (req, res) => {
     }
 });
 
+router.get('/scores', async(req, res) => {
+    try {
+        const currency = await Score.find().sort({ score: -1 }).limit(10);
+        if (score) {
+            res.json(score);
+        }
+        else {
+            res.status(404).json({ message: 'Score not found for this user' });
+        }
+    }
+    catch (error) {
+        console.error('Error getting user currency:', error);
+        res.status(500).json({ error: 'Server error while getting score' });
+    }
+});
+
 module.exports = router;
