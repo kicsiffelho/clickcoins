@@ -23,4 +23,26 @@ async function storeScore(score) {
     }
 }
 
-export { storeScore };
+async function getScores() {
+    const response = await fetch('/api/scores');
+    const scores = await response.json();
+    const scoresList = document.getElementById('scores-list');
+    scoresList.innerHTML = '';  
+    scores.forEach(score => {
+        const scoreItem = document.createElement('li');
+        scoreItem.textContent = `${score.userId}: ${score.score}`;
+        scoresList.appendChild(scoreItem);
+    }); 
+
+    if (response.ok) {  
+        console.log('Scores retrieved:', scores);
+    }
+    else {
+        const errorData = await response.text();
+        console.error('Error getting scores:', response.status, errorData);
+    }
+
+}
+document.getElementById('get-scores').addEventListener('click', getScores);
+
+export { storeScore, getScores };
