@@ -46,12 +46,6 @@ async function getScores() {
     }
 
 }
-document.addEventListener('DOMContentLoaded', () => {
-    const getScoresButton = document.getElementById('get-scores-button');
-    if (getScoresButton) {
-        getScoresButton.addEventListener('click', getScores);
-    }
-    getScores();
-});
+document.addEventListener('DOMContentLoaded', getScores);
 
 export { storeScore, getScores };
