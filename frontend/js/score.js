@@ -1,3 +1,5 @@
+import { get } from "../../backend/routes/scoreRoute";
+
 async function storeScore(score) {
     const user = clerk.user;
     if (user) {
@@ -44,6 +46,12 @@ async function getScores() {
     }
 
 }
-document.getElementById('get-scores').addEventListener('click', getScores);
+document.addEventListener('DOMContentLoaded', () => {
+    const getScoresButton = document.getElementById('get-scores-button');
+    if (getScoresButton) {
+        getScoresButton.addEventListener('click', getScores);
+    }
+    getScores();
+});
 
 export { storeScore, getScores };
