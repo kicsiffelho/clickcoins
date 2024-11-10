@@ -4,7 +4,6 @@ const scoreRoute = require('./routes/scoreRoute');
 const currencyRoute = require('./routes/currencyRoute');
 const bgColorRoute = require('./routes/bgColorRoute');
 const cors = require('cors');
-require('./db_connect');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,10 +29,6 @@ app.get('/welcome', (req, res) => {
 
 app.get('/game', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'game.html'));
-});
-
-app.get('/store', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'store.html'));
 });
 
 app.get('/score', (req, res) => {
