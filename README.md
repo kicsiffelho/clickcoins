@@ -19,3 +19,7 @@ ClickCoins is az entertaining web-based game where players can click on coins wi
 ## Support
 
 If you have any problems, feel free to reach out [support@gmail.com](mailto:support@gmail.com).
+
+---
+
+Have fun and enjoy the adventure!
