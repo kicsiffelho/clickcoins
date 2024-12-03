@@ -15,3 +15,7 @@ ClickCoins is az entertaining web-based game where players can click on coins wi
 - **Collect Coins:** Click on coins within the time limit to collect as many points as possible.
 - **Unlock Items:** Use your coins to buy cool backgrounds and upgrades in the store.
 - **Leaderboard:** Compete with others and climb to the top!
+
+## Support
+
+If you have any problems, feel free to reach out [support@gmail.com](mailto:support@gmail.com).
