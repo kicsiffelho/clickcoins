@@ -16,8 +16,10 @@ export async function changeBackgroundColor(color, price) {
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
         }
+        alert('Background changed. Check it out in the game!');
       }
       else {
+        alert('Not enough currency! Earn more coins!');
         console.error('Not enough currency to change background color');
       }
     }

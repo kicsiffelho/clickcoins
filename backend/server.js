@@ -15,10 +15,6 @@ app.use('/api', scoreRoute);
 app.use('/api', currencyRoute);
 app.use('/api', bgColorRoute);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
-});
-
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'reg.html'));
 });
@@ -28,16 +24,20 @@ app.get('/welcome', (req, res) => {
 });
 
 app.get('/game', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'game.html'));
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'main.html'));
+});
+
+app.get('/score', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'score.html'));
 });
 
 app.get('/store', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'store.html'));
 });
 
-app.get('/score', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'score.html'));
-});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
