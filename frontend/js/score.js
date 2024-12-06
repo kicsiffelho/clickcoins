@@ -67,7 +67,7 @@ async function displayHighScore(userId) {
 
 document.addEventListener('DOMContentLoaded', async() => {
     await getScores();
-    console.log('Clerk:', clerk);
+    console.log('Clerk user id:', clerk.user.id);
     const userId = clerk.user.id;
     displayHighScore(userId);
     
