@@ -62,9 +62,7 @@ async function displayHighScore(userId) {
     highscoreDiv.innerHTML = `<h5>Your highscore: ${score.score || 0}</h5>`;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    await displayHighScore(clerk.user.id);
-    getScores();
-});
+document.addEventListener('DOMContentLoaded', getScores);
+document.addEventListener('DOMContentLoaded', displayHighScore);
 
 export { storeScore, getScores, displayHighScore };
