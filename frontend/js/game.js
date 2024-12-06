@@ -93,7 +93,7 @@ function createCoin() {
   // Remove coin when clicked
   coin.addEventListener("click", () => {
     coinSound.playbackRate = 2;
-    coinSound.volume = 0.3;
+    coinSound.volume = 0.2;
     coinSound.play();
     gameArea.removeChild(coin);
     score++;

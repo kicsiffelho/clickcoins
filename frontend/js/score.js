@@ -55,12 +55,18 @@ async function getScores() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', getScores);
-
 async function displayHighScore(userId) {
     const response = await fetch(`/api/highscore/${userId}`);
     const score = await response.json();
-    document.getElementById('user-highscore').textContent = score.score;
+    
+    const highscoreDiv = document.getElementById('user-highscore');
+    highscoreDiv.innerHTML = `<h5>Your highscore: ${score.score || 0}</h5>`;
 }
+
+document.addEventListener('DOMContentLoaded', async() => {
+    await getScores();
+    const userId = clerk.user.id;
+    displayHighScore(userId);
+});
 
 export { storeScore, getScores, displayHighScore };
