@@ -60,8 +60,8 @@ async function displayHighScore(userId) {
     const score = await response.json();
 
     console.log('High score:', score);
-    
     const highscoreDiv = document.getElementById('user-highscore');
+    highscoreDiv.innerHTML = '';
     highscoreDiv.innerHTML = `<h5>Your highscore: ${score || 0}</h5>`;
 }
 
