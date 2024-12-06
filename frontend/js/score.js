@@ -58,6 +58,8 @@ async function getScores() {
 async function displayHighScore(userId) {
     const response = await fetch(`/api/highscore/${userId}`);
     const score = await response.json();
+
+    console.log('High score:', score);
     
     const highscoreDiv = document.getElementById('user-highscore');
     highscoreDiv.innerHTML = `<h5>Your highscore: ${score.score || 0}</h5>`;
@@ -65,8 +67,14 @@ async function displayHighScore(userId) {
 
 document.addEventListener('DOMContentLoaded', async() => {
     await getScores();
-    const userId = clerk.user.id;
-    displayHighScore(userId);
+    if(clerk.user) {
+        const userId = clerk.user.id;
+        displayHighScore(userId);
+        console.log('User logged in at highscore');
+    }
+    else {
+        console.log('User not logged in at highscore');
+    }
 });
 
 export { storeScore, getScores, displayHighScore };

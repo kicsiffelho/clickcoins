@@ -41,9 +41,11 @@ router.get('/highscore/:userId', async (req, res) => {
 
         if (highscore) {
             res.json(highscore);
+            console.log('Found highscore:', highscore);
         }
         else {
             res.json({score:0});
+            console.log('No highscore found, return 0');
         }
     }
     catch (error) {
