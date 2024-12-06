@@ -35,9 +35,7 @@ router.get('/scores', async(req, res) => {
 router.get('/highscore/:userId', async (req, res) => {
     const { userId } = req.params;
     try {
-        const highscore = await Score.findOne({ userId })
-            .sort({score: -1})
-            .limit(1);
+        const highscore = await Score.findOne({ userId }).sort({ score: -1 }).limit(1);
 
         if (highscore) {
             res.json(highscore);
