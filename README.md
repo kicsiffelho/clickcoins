@@ -5,7 +5,7 @@ ClickCoins is az entertaining web-based game where players can click on coins wi
 ## How to Play
 
 1. Open the game in your browser by clicking the link below:
-   [Play ClickCoins](https://clickcoins-0jcx.onrender.com)
+   [Play ClickCoins](https://clickcoins-both.onrender.com/)
 2. Start clicking on the coins to earn points.
 3. Use your points to unlock new items and backgrounds in the store.
 4. Check the leaderboard to see how you rank against other players.
