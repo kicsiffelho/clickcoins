@@ -41,7 +41,8 @@ async function getScores() {
         const errorData = await response.text();
         console.error('Error getting scores:', response.status, errorData);
     }
-
 }
+
+document.addEventListener('DOMContentLoaded', getScores);
 
 export { storeScore, getScores };
