@@ -73,3 +73,7 @@ footer {
 #user-button {
   margin-left: 12px;
 }
+
+#user-highscore {
+  border: 1px solid red;
+}

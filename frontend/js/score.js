@@ -67,14 +67,11 @@ async function displayHighScore(userId) {
 
 document.addEventListener('DOMContentLoaded', async() => {
     await getScores();
-    if(clerk.user) {
-        const userId = clerk.user.id;
-        displayHighScore(userId);
-        console.log('User logged in at highscore');
-    }
-    else {
-        console.log('User not logged in at highscore');
-    }
+    console.log('Clerk:', clerk);
+    const userId = clerk.user.id;
+    displayHighScore(userId);
+    
+    console.log('Highscore div:', document.getElementById('user-highscore').children);
 });
 
 export { storeScore, getScores, displayHighScore };
