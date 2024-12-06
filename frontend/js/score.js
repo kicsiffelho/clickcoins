@@ -28,6 +28,7 @@ async function getScores() {
     const response = await fetch('/api/scores');
     const scores = await response.json();
     const scoresList = document.getElementById('scores-list');
+    scoresList.innerHTML = '';
     scores.forEach((score, index) => {
         const row = document.createElement('tr');
         const indexCell = document.createElement('td');
