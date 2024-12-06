@@ -29,10 +29,26 @@ async function getScores() {
     const scoresList = document.getElementById('scores-list');
     scoresList.innerHTML = '';  
     scores.forEach(score => {
+        /*
         const scoreItem = document.createElement('li');
         scoreItem.textContent = `${score.userId}: ${score.score}`;
         scoresList.appendChild(scoreItem);
-    }); 
+        */
+        const row = document.createElement('tr');
+        const indexCell = document.createElement('td');
+        indexCell.textContent = index + 1;
+        row.appendChild(indexCell);
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = score.userId;
+        row.appendChild(nameCell);
+
+        const scoreCell = document.createElement('td');
+        scoreCell.textContent = score.score;
+        row.appendChild(scoreCell);
+
+        scoresList.appendChild(row);
+    });
 
     if (response.ok) {  
         console.log('Scores retrieved:', scores);
