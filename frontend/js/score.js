@@ -62,7 +62,7 @@ async function displayHighScore(userId) {
     console.log('High score:', score);
     
     const highscoreDiv = document.getElementById('user-highscore');
-    highscoreDiv.innerHTML = `<h5>Your highscore: ${score.score || 0}</h5>`;
+    highscoreDiv.innerHTML = `<h5>Your highscore: ${score || 0}</h5>`;
 }
 
 document.addEventListener('DOMContentLoaded', async() => {
