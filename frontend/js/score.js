@@ -63,10 +63,8 @@ async function displayHighScore(userId) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    await displayHighScore(clerk.user.id);
     await getScores();
-    console.log("Clerk: ", clerk.user);
-    const userId = clerk.user.id;
-    await displayHighScore(userId);
 });
 
 export { storeScore, getScores, displayHighScore };
