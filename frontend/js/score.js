@@ -58,9 +58,9 @@ async function getScores() {
 async function displayHighScore(userId) {
     const response = await fetch(`/api/highscore/${userId}`);
     const score = await response.json();
-    
+
     const highscoreDiv = document.getElementById('user-highscore');
-    highscoreDiv.innerHTML = `<h5>Your highscore: ${score || 0}</h5>`;
+    highscoreDiv.innerHTML = `<h5>Your highscore: ${score.score || 0}</h5>`;
 }
 
 document.addEventListener('DOMContentLoaded', async() => {
