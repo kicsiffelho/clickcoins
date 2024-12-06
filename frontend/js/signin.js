@@ -8,7 +8,7 @@ async function initClerk() {
     await clerk.load();
 
     if (clerk.user) {
-        window.location.href = './welcome.html';
+        window.location.href = '/welcome';
     } else {
         document.getElementById("app").innerHTML = `<div id="sign-in"></div>`;
         const signInDiv = document.getElementById("sign-in");

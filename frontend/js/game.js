@@ -20,7 +20,7 @@ const startOverlay = document.getElementById("start-overlay");
 const scoreModal = document.getElementById("score-modal");
 const tryAgainButton = document.getElementById("try-again-button");
 const closeModalButton = document.getElementById("close-modal");
-const coinSound = new URL("../assets/coin.png", import.meta.url).href;
+const coinSound = new Audio("../assets/coin.wav", import.meta.url).href;
 
 async function initalizeCurrency() {
   const user = window.clerk.user;
