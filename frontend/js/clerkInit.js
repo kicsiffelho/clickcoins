@@ -37,7 +37,7 @@ async function initClerk() {
             console.error('Error fetching currency:', error);
         }
         displayHighScore(userId);
-        displayHighScore();
+        displayWelcomeMsg();
     }
 }
 
