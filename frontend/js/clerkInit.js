@@ -3,6 +3,7 @@ import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from "./currencyDisplay.js";
 import { postBackgroundColor, fetchBackgroundColor } from './background.js';
 import { displayHighScore } from "./score.js";
+import { displayWelcomeMsg } from "./welcomemsg.js";
 import { shadesOfPurple } from '@clerk/themes';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -23,6 +24,7 @@ async function initClerk() {
 
     if (clerk.user) {
         const userId = clerk.user.id;
+        const username = clerk.user.username;
         try {
             const currencyAmount = await fetchCurrency(userId);
             if (currencyAmount !== null) {
@@ -36,6 +38,7 @@ async function initClerk() {
             console.error('Error fetching currency:', error);
         }
         displayHighScore(userId);
+        displayHighScore(username);
     }
 }
 
