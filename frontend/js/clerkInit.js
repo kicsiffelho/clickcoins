@@ -24,7 +24,6 @@ async function initClerk() {
 
     if (clerk.user) {
         const userId = clerk.user.id;
-        const username = clerk.user.username;
         try {
             const currencyAmount = await fetchCurrency(userId);
             if (currencyAmount !== null) {
@@ -38,7 +37,7 @@ async function initClerk() {
             console.error('Error fetching currency:', error);
         }
         displayHighScore(userId);
-        displayHighScore(username);
+        displayHighScore();
     }
 }
 
