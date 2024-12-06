@@ -24,7 +24,6 @@ async function storeScore(score) {
         console.error('User not logged in');
     }
 }
-export { storeScore };
 
 async function getScores() {
     const response = await fetch('/api/scores');
