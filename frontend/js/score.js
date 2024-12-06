@@ -64,6 +64,6 @@ async function displayHighScore(userId) {
 }
 
 document.addEventListener('DOMContentLoaded', getScores);
-document.addEventListener('DOMContentLoaded', displayHighScore);
+document.addEventListener('DOMContentLoaded', displayHighScore(clerk.user.id));
 
 export { storeScore, getScores, displayHighScore };
