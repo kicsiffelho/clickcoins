@@ -30,11 +30,6 @@ async function getScores() {
     const scoresList = document.getElementById('scores-list');
     scoresList.innerHTML = '';  
     scores.forEach((score, index) => {
-        /*
-        const scoreItem = document.createElement('li');
-        scoreItem.textContent = `${score.userId}: ${score.score}`;
-        scoresList.appendChild(scoreItem);
-        */
         const row = document.createElement('tr');
         const indexCell = document.createElement('td');
         indexCell.textContent = index + 1;
@@ -61,5 +56,11 @@ async function getScores() {
 }
 
 document.addEventListener('DOMContentLoaded', getScores);
+
+async function displayHighScore(userId) {
+    const response = await fetch('/api/highscore/${userId}');
+    const score = await response.json();
+    document.getElementById('user-highscore').textContent = score.score;
+}
 
 export { storeScore, getScores };
