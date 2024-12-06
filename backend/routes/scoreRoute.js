@@ -3,8 +3,8 @@ const router = express.Router();
 const { Score } = require('../db_connect');
 
 router.post('/store-score', async (req, res) => {
-    const { userId, score } = req.body;
-    const newScore = new Score({ userId, score });
+    const { userId, score, username } = req.body;
+    const newScore = new Score({ userId, score, username });
     try {
         await newScore.save();
         console.log('Score added');

@@ -2,12 +2,13 @@ async function storeScore(score) {
     const user = clerk.user;
     if (user) {
         const userId = user.id;
+        const username = user.username;
         const response = await fetch('/api/store-score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({userId, score})
+            body: JSON.stringify({userId, score, username})
         });
         if (response.ok) {
             const data = await response.json();
@@ -40,7 +41,7 @@ async function getScores() {
         row.appendChild(indexCell);
 
         const nameCell = document.createElement('td');
-        nameCell.textContent = score.userId;
+        nameCell.textContent = score.username;
         row.appendChild(nameCell);
 
         const scoreCell = document.createElement('td');
