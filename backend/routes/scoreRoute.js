@@ -18,7 +18,7 @@ router.post('/store-score', async (req, res) => {
 
 router.get('/scores', async(req, res) => {
     try {
-        const currency = await Score.find().sort({ score: -1 }).limit(10);
+        const score = await Score.find().sort({ score: -1 }).limit(10);
         if (score) {
             res.json(score);
         }
