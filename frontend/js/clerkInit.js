@@ -2,6 +2,7 @@ import { Clerk } from "@clerk/clerk-js";
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from "./currencyDisplay.js";
 import { postBackgroundColor, fetchBackgroundColor } from './background.js';
+import { displayHighScore } from "./score.js";
 import { shadesOfPurple } from '@clerk/themes';
 
 const clerkPubKey = 'pk_test_Y29oZXJlbnQtcGVnYXN1cy04MS5jbGVyay5hY2NvdW50cy5kZXYk';
@@ -34,6 +35,7 @@ async function initClerk() {
         catch (error) {
             console.error('Error fetching currency:', error);
         }
+        displayHighScore(userId);
     }
 }
 
