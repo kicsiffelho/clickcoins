@@ -58,20 +58,15 @@ async function getScores() {
 async function displayHighScore(userId) {
     const response = await fetch(`/api/highscore/${userId}`);
     const score = await response.json();
-
-    console.log('High score:', score);
+    
     const highscoreDiv = document.getElementById('user-highscore');
-    highscoreDiv.innerHTML = '';
     highscoreDiv.innerHTML = `<h5>Your highscore: ${score || 0}</h5>`;
 }
 
 document.addEventListener('DOMContentLoaded', async() => {
     await getScores();
-    console.log('Clerk user id:', clerk.user);
-    const userId = clerk.user.id;
+    const userId = window.clerk.user.id;
     displayHighScore(userId);
-    
-    console.log('Highscore div:', document.getElementById('user-highscore').children);
 });
 
 export { storeScore, getScores, displayHighScore };
