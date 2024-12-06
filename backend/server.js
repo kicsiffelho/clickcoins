@@ -35,6 +35,10 @@ app.get('/score', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'score.html'));
 });
 
+app.get('/store', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'store.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

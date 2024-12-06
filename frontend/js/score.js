@@ -1,5 +1,3 @@
-import { get } from "../../backend/routes/scoreRoute";
-
 async function storeScore(score) {
     const user = clerk.user;
     if (user) {
@@ -45,6 +43,5 @@ async function getScores() {
     }
 
 }
-document.addEventListener('DOMContentLoaded', getScores);
 
 export { storeScore, getScores };
