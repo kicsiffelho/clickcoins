@@ -94,4 +94,4 @@ export async function updateButtonTexts(userId) {
         });
 })};
 
-export { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned, updateButtonTexts };
+export { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned };
