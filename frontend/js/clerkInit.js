@@ -38,8 +38,8 @@ async function initClerk() {
             console.error('Error fetching currency:', error);
         }
         displayHighScore(userId);
+        updateButtonTexts(userId);
         displayWelcomeMsg();
-        await updateButtonTexts(userId);
     }
 }
 
