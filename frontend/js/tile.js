@@ -9,8 +9,9 @@ export async function changeBackgroundColor(color, price) {
   if (user) {
     const userId = user.id;
     try {
+      const isOwned = isBackgroundOwned(userId, color);
       const spentAmount = await spendCurrency(userId, price);
-      if (spentAmount > 0) {
+      if (spentAmount > 0 || isOwned) {
         await postBackgroundColor(userId, color);
         const updatedAmount = await fetchCurrency(userId);
         if (updatedAmount !== null) {
@@ -63,7 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      console.log(button.id)
       let price, color;
       switch (button.id) {
           case 'bgBlue':
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               color = '#ed1d25';
               break;
       }
+      console.log("Button ID: ", button.id);
       if (button.innerText === 'Change') {
         price = 0;
       }
@@ -140,7 +141,7 @@ export async function updateButtonTexts(userId) {
         if (isOwned === true) {
           button.innerText = 'Change';
         } else {
-          button.innerText = 'Add'
+          button.innerText = 'Add';
         }
       }
       catch (error) {
