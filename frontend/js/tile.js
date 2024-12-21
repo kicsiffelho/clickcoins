@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   })
   setBackgroundColor();
-  updateButtonTexts(userId);
 })
 
 export async function updateButtonTexts(userId) {
@@ -137,8 +136,11 @@ export async function updateButtonTexts(userId) {
           console.log(`Color: ${color}, Owned: ${isOwned}`);
           if (isOwned === true) {
             button.innerText = 'Change';
-          } else {
-            button.innerText = 'Select';
+          } else if (isOwned === false) {
+            button.innerText = 'Add';
+          }
+          else {
+            button.innerText = 'Add'
           }
         }
         catch (err) {
