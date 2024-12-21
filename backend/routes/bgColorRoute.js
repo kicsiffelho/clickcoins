@@ -36,14 +36,14 @@ router.get('/background-color/:userId', async (req, res) => {
 });
 
 router.get('/background-color/:userId/:color', async (req, res) => {
-    const { userId } = req.params;
-    if (!userId) {
+    const { userId, color } = req.params;
+    if (!userId || !color) {
         return res.status(400).json({ error: 'Missing userId or color' });
     }
     try {
         const backgroundColor = await BackgroundColor.findOne({ userId, color });
         if (backgroundColor) {
-            return res.json({ color: backgroundColor});
+            return res.json({ color: backgroundColor.color, owned: true});
         }
         else {
             return res.json({ color: '#353535fc', owned: false });
