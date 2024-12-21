@@ -50,46 +50,47 @@ async function isBackgroundOwned(userId, color) {
     }
 }
 
-export async function updateButtonTexts(userId) {
+export async function checkAndUpdateButtonTexts(userId) {
     const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
-    bgButton.forEach(button => {
-        button.addEventListener('click', async (event) => {
-        event.preventDefault();
+    for (const button of bgButton) {
         let color;
         switch (button.id) {
-            case 'bgBlue':
-                color = '#00a3e9';
-                break;
-            case 'bgBrown':
-                color = '#b97b56';
-                break;
-            case 'bgCrimson':
-                color = '#7b0103';
-                break;
-            case 'bgGreen':
-                color = '#22b14c';
-                break;
-            case 'bgGrey':
-                color = '#7f7f7f';
-                break;
-            case 'bgOrange':
-                color = '#fc6a03';
-                break;
-            case 'bgPink':
-                color = '#eb3780';
-                break;
-            case 'bgRed':
-                color = '#ed1d25';
-                break;
-        };
-        const isOwned = await isBackgroundOwned(userId, color);
-        if (isOwned) {
-            button.textContent = "Change"; 
+        case 'bgBlue':
+            color = '#00a3e9';
+            break;
+        case 'bgBrown':
+            color = '#b97b56';
+            break;
+        case 'bgCrimson':
+            color = '#7b0103';
+            break;
+        case 'bgGreen':
+            color = '#22b14c';
+            break;
+        case 'bgGrey':
+            color = '#7f7f7f';
+            break;
+        case 'bgOrange':
+            color = '#fc6a03';
+            break;
+        case 'bgPink':
+            color = '#eb3780';
+            break;
+        case 'bgRed':
+            color = '#ed1d25';
+            break;
         }
-        else {
-            button.textContent = "Add";
+        if (color) {
+            const isOwned = await isBackgroundOwned(userId, color);
+            
+            if (isOwned) {
+                button.textContent = "Change"; 
+            }
+            else {
+                button.textContent = "Add"; 
+                }
         }
-        });
-})};
+    }
+}
 
 export { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned };
