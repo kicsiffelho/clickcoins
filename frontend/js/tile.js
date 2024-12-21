@@ -59,6 +59,7 @@ function updateGameAreaBackground(color) {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+  console.log('DOM Content Loaded'); 
   const userId = window.clerk.user.id;
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
   console.log(bgButton);
@@ -112,15 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 export async function updateButtonTexts(userId) {
-  console.log('updateButtonTexts called with userId:', userId);
   const bgButtons = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
-  
-  if (bgButtons.length === 0) {
-    console.error('No buttons found');
-    return;
-  }
-
-  console.log('Selected buttons:', bgButtons);
 
   for (const button of bgButtons) {
     let color;
