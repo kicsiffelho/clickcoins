@@ -1,7 +1,7 @@
 import { spendCurrency } from './currencyTransaction.js';
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
-import { postBackgroundColor, fetchBackgroundColor } from './background.js';
+import { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned } from './background.js';
 
 export async function changeBackgroundColor(color, price) {
   const user = window.clerk.user;
