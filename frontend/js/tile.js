@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 export async function updateButtonTexts(userId) {
   console.log('updateButtonTexts called with userId:', userId);
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
-  if (bgButtons.length === 0) {
+  if (bgButton.length === 0) {
     console.error('No buttons found');
     return;
   }
