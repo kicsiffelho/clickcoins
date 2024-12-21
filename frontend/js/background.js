@@ -50,7 +50,7 @@ async function isBackgroundOwned(userId, color) {
     }
 }
 
-export async function checkAndUpdateButtonTexts(userId) {
+export async function updateButtonTexts(userId) {
     const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
     for (const button of bgButton) {
         let color;
@@ -82,7 +82,7 @@ export async function checkAndUpdateButtonTexts(userId) {
         }
         if (color) {
             const isOwned = await isBackgroundOwned(userId, color);
-            
+
             if (isOwned) {
                 button.textContent = "Change"; 
             }
