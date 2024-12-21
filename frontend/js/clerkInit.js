@@ -38,7 +38,7 @@ async function initClerk() {
         }
         displayHighScore(userId);
         displayWelcomeMsg();
-        await updateButtonTexts(userId);
+        updateButtonTexts(userId);
     }
 }
 
