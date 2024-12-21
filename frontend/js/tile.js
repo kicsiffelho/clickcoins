@@ -67,41 +67,42 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault();
       const user = window.clerk.user;
       const userId = user.id; 
-      let price;
+      let price, color;
       switch (button.id) {
           case 'bgBlue':
               price = 10;
-              changeBackgroundColor('#00a3e9', price, button.id);
+              color = '#00a3e9';
               break;
           case 'bgBrown':
               price = 20;
-              changeBackgroundColor('#b97b56', price, button.id);
+              color = '#b97b56';
               break;
           case 'bgCrimson':
               price = 50;
-              changeBackgroundColor('#7b0103', price, button.id);
+              color = '#7b0103';
               break;
           case 'bgGreen':
               price = 40;
-              changeBackgroundColor('#22b14c', price, button.id);
+              color = '#22b14c';
               break;
           case 'bgGrey':
               price = 60;
-              changeBackgroundColor('#7f7f7f', price, button.id);
+              color = '#7f7f7f';
               break;
           case 'bgOrange':
               price = 150;
-              changeBackgroundColor('#fc6a03', price, button.id);
+              color = '#fc6a03';
               break;
           case 'bgPink':
               price = 40;
-              changeBackgroundColor('#eb3780', price, button.id);
+              color = '#eb3780';
               break;
           case 'bgRed':
               price = 50;
-              changeBackgroundColor('#ed1d25', price, button.id);
+              color = '#ed1d25';
               break;
-      }
+      };
+      await changeBackgroundColor(color, price, button);
       const isOwned = await isBackgroundOwned(userId, color); 
       if (isOwned) {
         button.textContent = "Change"; 
