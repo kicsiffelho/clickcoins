@@ -36,9 +36,15 @@ async function isBackgroundOwned(userId, color) {
     try {
         const response = await fetch(`/api/backgrounds-colors/${userId}`);
         if(response.ok) {
-            const colors = await response.json();
-            const ownedColor = colors.find(c => c.color === color);
-            return ownedColor ? ownedColor.owned : false;
+            try {
+                const colors = await response.json();
+                const ownedColor = colors.find(c => c.color === color);
+                return ownedColor ? ownedColor.owned : false;
+            }
+            catch (error) {
+                console.error('Error parsing JSON response:', error);
+                return false;
+            }
         }
         else {
             console.error('Error fetching if background color owned: ', response.status);
