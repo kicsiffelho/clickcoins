@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
+      const user = window.clerk.user;
+      const userId = user.id; 
       let price;
       switch (button.id) {
           case 'bgBlue':
@@ -103,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const isOwned = await isBackgroundOwned(userId, color); 
       if (isOwned) {
         button.textContent = "Change"; 
-      } 
+      };
     });
   });
   setBackgroundColor();
