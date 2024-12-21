@@ -35,19 +35,21 @@ router.get('/background-color/:userId', async (req, res) => {
     }
 });
 
-router.get('/background-color/:userId/:color', async (req, res) => {
-    const { userId, color } = req.params;
-    if (!userId || !color) {
-        return res.status(400).json({ error: 'Missing userId or color' });
+router.get('/background-color/:userId', async (req, res) => {
+    const { userId } = req.params;
+    if (!userId ) {
+        return res.status(400).json({ error: 'Missing userId' });
     }
     try {
-        const backgroundColor = await BackgroundColor.findOne({ userId: userId, color: color });
-        if (backgroundColor) {
-            return res.json({ color: backgroundColor.color, owned: true});
+        const backgroundColors = await BackgroundColor.find({ userId });
+        if (backgroundColors.length === 0) {
+            return res.json([]);
         }
-        else {
-            return res.json({ color: '#353535fc', owned: false });
-        }
+        const response = backgroundColors.map(colorDoc => ({
+            color: colorDoc.color,
+            owned: true
+        }));
+        return res.json(response);
     }
     catch (error) {
         console.error('Error fetching background color:', error);
