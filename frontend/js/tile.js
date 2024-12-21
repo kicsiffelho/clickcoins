@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
+      console.log(button.id)
       let price, color;
       switch (button.id) {
           case 'bgBlue':
@@ -98,10 +99,10 @@ document.addEventListener('DOMContentLoaded', async () => {
               color = '#ed1d25';
               break;
       }
-      if (button.textContent === 'Change') {
+      if (button.innerText === 'Change') {
         price = 0;
       }
-      await changeBackgroundColor(userId, color, price);
+      await changeBackgroundColor(color, price);
     })
   })
   setBackgroundColor();
