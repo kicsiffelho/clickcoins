@@ -96,13 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
               price = 50;
               changeBackgroundColor('#ed1d25', price);
               break;
-      };
-    });
-  });
+      }
+    })
+  })
   setBackgroundColor();
-});
+})
 
 export async function updateButtonTexts(userId) {
+  console.log('updateButtonTexts called with userId:', userId);
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
   for (const button of bgButton) {
       let color;
@@ -133,15 +134,12 @@ export async function updateButtonTexts(userId) {
           break;
       }
       if (color) {
+        try {
           const isOwned = await isBackgroundOwned(userId, color);
           console.log(`Color: ${color}, Owned: ${isOwned}`);
-          const buttonText = isOwned ? "Change" : "Add";
-          const buttonTag = document.getElementById(button.id);
-          if (buttonTag) {
-            buttonTag.innerHTML = ` ${buttonText} `;
-          } else {
-              console.error(`Button with ID ${button.id} not found`);
-          }
+        } catch (error) {
+            console.error(`Error checking ownership for color ${color}:`, error);
+        }
       }
   }
 }
