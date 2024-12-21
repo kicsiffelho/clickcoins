@@ -82,13 +82,9 @@ async function updateButtonTexts(userId) {
         }
         if (color) {
             const isOwned = await isBackgroundOwned(userId, color);
-
-            if (isOwned) {
-                button.textContent = "Change"; 
-            }
-            else {
-                button.textContent = "Add"; 
-                }
+            const buttonText = isOwned ? "Change" : "Add";
+            const buttonTag = document.getElementById(button.id);
+            buttonTag.innerHTML = ` ${buttonText} `;
         }
     }
 }
