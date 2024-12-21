@@ -34,10 +34,11 @@ async function fetchBackgroundColor(userId) {
 
 async function isBackgroundOwned(userId, color) {
     try {
-        const response = await fetch(`/api/background-color/${userId}/${color}`);
+        const response = await fetch(`/api/background-color/${userId}`);
         if(response.ok) {
-            const data = await response.json();
-            return data.owned;
+            const colors = await response.json();
+            const ownedColor = colors.find(c => c.color === color);
+            return ownedColor ? ownedColor.owned : false;
         }
         else {
             console.error('Error fetching if background color owned: ', response.status);

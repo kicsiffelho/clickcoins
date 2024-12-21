@@ -140,6 +140,11 @@ export async function updateButtonTexts(userId) {
         try {
           const isOwned = await isBackgroundOwned(userId, color);
           console.log(`Color: ${color}, Owned: ${isOwned}`);
+          if (isOwned) {
+            button.innerText = 'Change';
+          } else {
+            button.innerText = 'Add';
+          }
         } catch (error) {
             console.error(`Error checking ownership for color ${color}:`, error);
         }
