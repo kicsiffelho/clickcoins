@@ -5,7 +5,7 @@ const { BackgroundColor } = require('../db_connect');
 router.post('/background-color', async (req, res) => {
     const { userId, color } = req.body;
     try {
-        const newBackgroundColor = new BackgroundColor({userId, color, owned: false});
+        const newBackgroundColor = new BackgroundColor({userId, color, owned: true});
         await newBackgroundColor.save();
         res.json({message: 'Background color saved successfully'});
     }

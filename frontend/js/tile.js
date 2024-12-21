@@ -3,12 +3,17 @@ import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
 import { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned } from './background.js';
 
-export async function changeBackgroundColor(color, price) {
+export async function changeBackgroundColor(color, price, button) {
   const user = window.clerk.user;
   console.log(user);
   if (user) {
     const userId = user.id;
     try {
+      if (button.textContent == "Change") {
+        await postBackgroundColor(userId, color);
+        alert('Background changed. Check it out in the game!');
+        return;
+      }
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
         const isOwned = await isBackgroundOwned(userId, color);
@@ -69,35 +74,35 @@ document.addEventListener('DOMContentLoaded', function() {
       switch (button.id) {
           case 'bgBlue':
               price = 10;
-              changeBackgroundColor('#00a3e9', price);
+              changeBackgroundColor('#00a3e9', price, button.id);
               break;
           case 'bgBrown':
               price = 20;
-              changeBackgroundColor('#b97b56', price);
+              changeBackgroundColor('#b97b56', price, button.id);
               break;
           case 'bgCrimson':
               price = 50;
-              changeBackgroundColor('#7b0103', price);
+              changeBackgroundColor('#7b0103', price, button.id);
               break;
           case 'bgGreen':
               price = 40;
-              changeBackgroundColor('#22b14c', price);
+              changeBackgroundColor('#22b14c', price, button.id);
               break;
           case 'bgGrey':
               price = 60;
-              changeBackgroundColor('#7f7f7f', price);
+              changeBackgroundColor('#7f7f7f', price, button.id);
               break;
           case 'bgOrange':
               price = 150;
-              changeBackgroundColor('#fc6a03', price);
+              changeBackgroundColor('#fc6a03', price, button.id);
               break;
           case 'bgPink':
               price = 40;
-              changeBackgroundColor('#eb3780', price);
+              changeBackgroundColor('#eb3780', price, button.id);
               break;
           case 'bgRed':
               price = 50;
-              changeBackgroundColor('#ed1d25', price);
+              changeBackgroundColor('#ed1d25', price, button.id);
               break;
       }
     });
