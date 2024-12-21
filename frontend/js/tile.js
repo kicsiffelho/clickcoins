@@ -61,9 +61,11 @@ function updateGameAreaBackground(color) {
 document.addEventListener('DOMContentLoaded', async () => {
   const userId = window.clerk.user.id;
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
+  console.log(bgButton);
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
+      console.log("Button ID: ", button.id);
       let price, color;
       switch (button.id) {
           case 'bgBlue':
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               color = '#ed1d25';
               break;
       }
-      console.log("Button ID: ", button.id);
+      console.log('Button text:', button.innerText);
       if (button.innerText === 'Change') {
         price = 0;
       }
