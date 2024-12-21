@@ -106,52 +106,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 export async function updateButtonTexts(userId) {
   console.log('updateButtonTexts called with userId:', userId);
-  const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
-  if (bgButton.length === 0) {
-    console.error('No buttons found');
-    return;
-  }
-  console.log('Selected buttons:', bgButton);
-  for (const button of bgButton) {
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const bgButtons = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
+    
+    if (bgButtons.length === 0) {
+      console.error('No buttons found');
+      return;
+    }
+
+    console.log('Selected buttons:', bgButtons);
+
+    for (const button of bgButtons) {
       let color;
+
       switch (button.id) {
-      case 'bgBlue':
-          color = '#00a3e9';
-          break;
-      case 'bgBrown':
-          color = '#b97b56';
-          break;
-      case 'bgCrimson':
-          color = '#7b0103';
-          break;
-      case 'bgGreen':
-          color = '#22b14c';
-          break;
-      case 'bgGrey':
-          color = '#7f7f7f';
-          break;
-      case 'bgOrange':
-          color = '#fc6a03';
-          break;
-      case 'bgPink':
-          color = '#eb3780';
-          break;
-      case 'bgRed':
-          color = '#ed1d25';
-          break;
+        case 'bgBlue': color = '#00a3e9'; break;
+        case 'bgBrown': color = '#b97b56'; break;
+        case 'bgCrimson': color = '#7b0103'; break;
+        case 'bgGreen': color = '#22b14c'; break;
+        case 'bgGrey': color = '#7f7f7f'; break;
+        case 'bgOrange': color = '#fc6a03'; break;
+        case 'bgPink': color = '#eb3780'; break;
+        case 'bgRed': color = '#ed1d25'; break;
       }
+
       if (color) {
         try {
           const isOwned = await isBackgroundOwned(userId, color);
           console.log(`Color: ${color}, Owned: ${isOwned}`);
-          if (isOwned) {
+          if (isOwned === true) {
             button.innerText = 'Change';
           } else {
-            button.innerText = 'Add';
+            button.innerText = 'Select';
           }
-        } catch (error) {
-            console.error(`Error checking ownership for color ${color}:`, error);
+        }
+        catch (err) {
+          console.error(`Error checking ownership for color ${color}:`, err);
         }
       }
-  }
+    }
+  });
 }
