@@ -57,51 +57,54 @@ function updateGameAreaBackground(color) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async () => {
   const userId = window.clerk.user.id;
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      let price
+      let price, color;
       switch (button.id) {
           case 'bgBlue':
               price = 10;
-              changeBackgroundColor('#00a3e9', price);
+              color = '#00a3e9';
               break;
           case 'bgBrown':
               price = 20;
-              changeBackgroundColor('#b97b56', price);
+              color = '#b97b56';
               break;
           case 'bgCrimson':
               price = 50;
-              changeBackgroundColor('#7b0103', price);
+              color = '#7b0103';
               break;
           case 'bgGreen':
               price = 40;
-              changeBackgroundColor('#22b14c', price);
+              color = '#22b14c';
               break;
           case 'bgGrey':
               price = 60;
-              changeBackgroundColor('#7f7f7f', price);
+              color = '#7f7f7f';
               break;
           case 'bgOrange':
               price = 150;
-              changeBackgroundColor('#fc6a03', price);
+              color = '#fc6a03';
               break;
           case 'bgPink':
               price = 40;
-              changeBackgroundColor('#eb3780', price);
+              color = '#eb3780';
               break;
           case 'bgRed':
               price = 50;
-              changeBackgroundColor('#ed1d25', price);
+              color = '#ed1d25';
               break;
       }
+      if (button.textContent === 'Change') {
+        price = 0;
+      }
+      await changeBackgroundColor(userId, color, price);
     })
   })
   setBackgroundColor();
-  updateButtonTexts(userId);
 })
 
 export async function updateButtonTexts(userId) {
