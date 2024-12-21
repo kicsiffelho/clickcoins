@@ -34,7 +34,7 @@ async function fetchBackgroundColor(userId) {
 
 async function isBackgroundOwned(userId, color) {
     try {
-        const response = await fetch(`/api/backgrounds-color/${userId}`);
+        const response = await fetch(`/api/backgrounds-colors/${userId}`);
         if(response.ok) {
             const colors = await response.json();
             const ownedColor = colors.find(c => c.color === color);
