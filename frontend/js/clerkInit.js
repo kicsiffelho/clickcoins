@@ -1,7 +1,8 @@
 import { Clerk } from "@clerk/clerk-js";
 import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from "./currencyDisplay.js";
-import { postBackgroundColor, fetchBackgroundColor, updateButtonTexts, isBackgroundOwned } from './background.js';
+import { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned } from './background.js';
+import { updateButtonTexts } from "./tile.js";
 import { displayHighScore } from "./score.js";
 import { displayWelcomeMsg } from "./welcomemsg.js";
 import { shadesOfPurple } from '@clerk/themes';
@@ -38,7 +39,7 @@ async function initClerk() {
         }
         displayHighScore(userId);
         displayWelcomeMsg();
-        updateButtonTexts(userId);
+        await updateButtonTexts(userId);
     }
 }
 
