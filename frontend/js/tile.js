@@ -11,7 +11,10 @@ export async function changeBackgroundColor(color, price) {
     try {
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
-        await postBackgroundColor(userId, color);
+        const isOwned = await isBackgroundOwned(userId, color);
+        if (!isOwned) {
+          await postBackgroundColor(userId, color);
+        }
         const updatedAmount = await fetchCurrency(userId);
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
