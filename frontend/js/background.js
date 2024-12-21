@@ -45,7 +45,7 @@ async function isBackgroundOwned(userId, color) {
             return false;
         }
     }
-    catch {
+    catch (error) {
         console.error('Error fetching if background color owned: ', error);
         return false;
     }

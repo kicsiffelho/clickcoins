@@ -130,6 +130,7 @@ export async function updateButtonTexts(userId) {
     }
 
     if (color) {
+      try {
         const isOwned = await isBackgroundOwned(userId, color);
         console.log(`Color: ${color}, Owned: ${isOwned}`);
         if (isOwned === true) {
@@ -137,6 +138,10 @@ export async function updateButtonTexts(userId) {
         } else {
           button.innerText = 'Add'
         }
+      }
+      catch (error) {
+        console.error(`Error checking ownership for color ${color}:`)
+      }
     }
   }
 }
