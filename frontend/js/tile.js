@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      let price, color;
+      let price
       switch (button.id) {
           case 'bgBlue':
               price = 10;

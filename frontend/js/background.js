@@ -55,8 +55,6 @@ export async function updateButtonTexts(userId) {
     bgButton.forEach(button => {
         button.addEventListener('click', async (event) => {
         event.preventDefault();
-        const user = window.clerk.user;
-        const userId = user.id; 
         let color;
         switch (button.id) {
             case 'bgBlue':
@@ -86,10 +84,10 @@ export async function updateButtonTexts(userId) {
         };
         const isOwned = await isBackgroundOwned(userId, color);
         if (isOwned) {
-            bgButton.textContent = "Change"; 
+            button.textContent = "Change"; 
         }
         else {
-            bgButton.textContent = "Add";
+            button.textContent = "Add";
         }
         });
 })};
