@@ -11,10 +11,7 @@ export async function changeBackgroundColor(color, price) {
     try {
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
-        const isOwned = await isBackgroundOwned(userId, color);
-        if (!isOwned) {
-          await postBackgroundColor(userId, color);
-        }
+        await postBackgroundColor(userId, color);
         const updatedAmount = await fetchCurrency(userId);
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
@@ -65,47 +62,40 @@ document.addEventListener('DOMContentLoaded', function() {
   bgButton.forEach(button => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      const user = window.clerk.user;
-      const userId = user.id; 
       let price, color;
       switch (button.id) {
           case 'bgBlue':
               price = 10;
-              color = '#00a3e9';
+              changeBackgroundColor('#00a3e9', price);
               break;
           case 'bgBrown':
               price = 20;
-              color = '#b97b56';
+              changeBackgroundColor('#b97b56', price);
               break;
           case 'bgCrimson':
               price = 50;
-              color = '#7b0103';
+              changeBackgroundColor('#7b0103', price);
               break;
           case 'bgGreen':
               price = 40;
-              color = '#22b14c';
+              changeBackgroundColor('#22b14c', price);
               break;
           case 'bgGrey':
               price = 60;
-              color = '#7f7f7f';
+              changeBackgroundColor('#7f7f7f', price);
               break;
           case 'bgOrange':
               price = 150;
-              color = '#fc6a03';
+              changeBackgroundColor('#fc6a03', price);
               break;
           case 'bgPink':
               price = 40;
-              color = '#eb3780';
+              changeBackgroundColor('#eb3780', price);
               break;
           case 'bgRed':
               price = 50;
-              color = '#ed1d25';
+              changeBackgroundColor('#ed1d25', price);
               break;
-      };
-      await changeBackgroundColor(color, price, button);
-      const isOwned = await isBackgroundOwned(userId, color); 
-      if (isOwned) {
-        button.textContent = "Change"; 
       };
     });
   });
