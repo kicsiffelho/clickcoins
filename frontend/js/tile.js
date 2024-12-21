@@ -3,17 +3,12 @@ import { fetchCurrency } from './currency.js';
 import { updateCurrencyDisplay } from './currencyDisplay.js';
 import { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned } from './background.js';
 
-export async function changeBackgroundColor(color, price, button) {
+export async function changeBackgroundColor(color, price) {
   const user = window.clerk.user;
   console.log(user);
   if (user) {
     const userId = user.id;
     try {
-      if (button.textContent == "Change") {
-        await postBackgroundColor(userId, color);
-        alert('Background changed. Check it out in the game!');
-        return;
-      }
       const spentAmount = await spendCurrency(userId, price);
       if (spentAmount > 0) {
         const isOwned = await isBackgroundOwned(userId, color);
@@ -68,7 +63,7 @@ function updateGameAreaBackground(color) {
 document.addEventListener('DOMContentLoaded', function() {
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
   bgButton.forEach(button => {
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', async (event) => {
       event.preventDefault();
       let price;
       switch (button.id) {
@@ -105,6 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
               changeBackgroundColor('#ed1d25', price, button.id);
               break;
       }
+      const isOwned = await isBackgroundOwned(userId, color); 
+      if (isOwned) {
+        button.textContent = "Change"; 
+      } 
     });
   });
   setBackgroundColor();
