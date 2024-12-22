@@ -5,7 +5,7 @@ const { BackgroundColor } = require('../db_connect');
 router.post('/background-color', async (req, res) => {
     const { userId, color } = req.body;
     try {
-        const newBackgroundColor = new BackgroundColor({userId, color});
+        const newBackgroundColor = new BackgroundColor({userId, color, owned: true});
         await newBackgroundColor.save();
         res.json({message: 'Background color saved successfully'});
     }
@@ -28,6 +28,28 @@ router.get('/background-color/:userId', async (req, res) => {
         else {
             return res.json({ color: '#353535fc' });
         }
+    }
+    catch (error) {
+        console.error('Error fetching background color:', error);
+        res.status(500).json({ error: 'Server error while fetching background color' });
+    }
+});
+
+router.get('/background-colors/:userId', async (req, res) => {
+    const { userId } = req.params;
+    if (!userId ) {
+        return res.status(400).json({ error: 'Missing userId' });
+    }
+    try {
+        const backgroundColors = await BackgroundColor.find({ userId });
+        if (backgroundColors.length === 0) {
+            return res.json([]);
+        }
+        const response = backgroundColors.map((colorDoc) => ({
+            color: colorDoc.color,
+            owned: colorDoc.owned
+        }));
+        return res.json(response);
     }
     catch (error) {
         console.error('Error fetching background color:', error);
