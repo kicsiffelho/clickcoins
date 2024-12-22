@@ -11,14 +11,18 @@ export async function changeBackgroundColor(color, price) {
     try {
       const isOwned = isBackgroundOwned(userId, color);
       console.log('Background owned: ', isOwned);
-      if (!isOwned) {
-        const spentAmount = await spendCurrency(userId, price);
-        console.log('Spent amount: ', spentAmount);
-        if (spentAmount <= 0) {
-          alert('Not enough currency! Earn more coins!');
-          console.error('Not enough currency to change background color');
-          return;
-        }
+      if (isOwned) {
+        await postBackgroundColor(userId, color);
+        alert('Background changed!');
+        return;
+      }
+
+      const spentAmount = await spendCurrency(userId, price);
+      console.log('Spent amount: ', spentAmount);
+      if (spentAmount <= 0) {
+        alert('Not enough currency! Earn more coins!');
+        console.error('Not enough currency to change background color');
+        return;
       }
       
       await postBackgroundColor(userId, color);

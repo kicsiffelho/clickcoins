@@ -6,7 +6,7 @@ async function fetchCurrency(userId) {
     }
     else {
         console.error('Error fetching currency: ', response.status);
-        return null;
+        return 0;
     }
 }
 
