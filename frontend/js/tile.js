@@ -14,7 +14,7 @@ export async function changeBackgroundColor(color, price) {
       if (!isOwned) {
         const spentAmount = await spendCurrency(userId, price);
         console.log('Spent amount: ', spentAmount);
-        if (spentAmount > 0) {
+        if (spentAmount <= 0) {
           alert('Not enough currency! Earn more coins!');
           console.error('Not enough currency to change background color');
         }
