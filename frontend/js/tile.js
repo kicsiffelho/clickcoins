@@ -15,14 +15,15 @@ export async function changeBackgroundColor(color, price) {
 
       const spentAmount = await spendCurrency(userId, price);
       console.log('Spent amount: ', spentAmount);
-      if (spentAmount > 0) {
+      if (spentAmount > 0 || price == 0) {
         await postBackgroundColor(userId, color);
         const updatedAmount = await fetchCurrency(userId);
         if (updatedAmount !== null) {
           updateCurrencyDisplay(updatedAmount);
         }
         alert('Background changed. Check it out in the game!');
-      } else {
+      }
+      else {
         alert('Not enough currency! Earn more coins!');
         console.error('Not enough currency to change background color');
         return;
