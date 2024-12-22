@@ -1,10 +1,8 @@
 # Teszt jegyzőkönyv - Háttérszín váltás funkció
----
 ##### Tesztelést végezte: Kiss Virág
 ##### Dátum: 2024. 12. 21.
 ##### Tesztkörnyezet: Windows 10, Brave
 ##### Tesztelt funkció: Háttérszín váltás
----
 ## Tesztek:
 - **Cél**:  Ellenőrizni, hogy a háttérszín váltás funkció a felhasználói elvárásoknak megfelelően működik-e, beleértve a tulajdonjog ellenőrzését, a valuta levonást és a felhasználói felület megfelelő reagálását.
 - **Teszt esetek**: 
@@ -56,8 +54,9 @@
             - Kattintson az "Add" gombra.
         - Teszt eredmény:
             - A gomb felirata nem frissült azonnal, csak oldal frissítés után.
----
 ## Megállapítások:
 **Pozitív:** A háttérszín váltás funkció alapvetően működik, a valuta levonás és a tulajdonjog ellenőrzése megfelelő.
+
 **Negatív:** A gomb felirata nem frissül azonnal a háttérszín megváltozása után.
+
 **Javaslatok:** A gomb felirat frissítését javítani kell.

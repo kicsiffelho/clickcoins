@@ -1,10 +1,8 @@
 # Teszt jegyzőkönyv - Valuta tranzakciók kezelése
----
 ##### Tesztelést végezte: Kiss Virág
 ##### Dátum: 2024. 10. 18.
 ##### Tesztkörnyezet: Windows 10, Brave
 ##### Tesztelt funkció: Játék során kapott valuta kezelése
----
 ## Tesztek:
 - **Cél**:  Ellenőrizni, hogy a játék során gyűjtött valutát megfelelő mennyiségben és megfelelő felhasznához be kerülnek-e az adatbázis megfelelő tábláiba. És, hogy a vásárlások során felhasznált valuták helyesen kerülnek kezelésre.
 - **Teszt esetek**: 
@@ -38,8 +36,9 @@
             - A rendszer nem módosított a felhasználó egyenlegét.
             - A játék alaphelyzetbe állt, az oldal újbúlili megnyitása után.
             - A rendszer nem tárolta a felhaszáló által kapott pontszámot.
----
 ## Megállapítások:
 **Pozitív:** A játékhoz tartozó valuta tranzakciók elképzelés szerint működnek.
+
 **Negatív:** Nincs, mivel minden teszt sikeres volt.
+
 **Javaslatok:** Oldal elhagyása után egy játék folytatása opció, ami elmenti az előző játék státuszát és onnan lehet folytatni.

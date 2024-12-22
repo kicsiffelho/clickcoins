@@ -1,10 +1,8 @@
 # Teszt jegyzőkönyv - Express.js útvonal tesztelése
----
 ##### Tesztelést végezte: Kiss Virág
 ##### Dátum: 2024. 09. 29.
 ##### Tesztkörnyezet: Windows 10, Brave
 ##### Tesztelt funkció: Express.js útvonalak elérése
----
 ## Tesztek:
 - **Cél**:  Ellenőrizni, hogy az Express.js alkalmazás útvonalai megfelelően kezeljék a kéréseket és válaszoljanak a várt módon.
 - **Teszt esetek**: 
@@ -56,8 +54,9 @@
             - Küldj egy GET kérést egy olyan útvonalra, amely nem szerepel a definiált útvonalak között (pl. /nonexistent)
         - Teszt eredmény:
             - A válasz tartalmazza az index.html fájl tartalmát.
----
 ## Megállapítások:
 **Pozitív:** Minden teszt sikeres volt.
+
 **Negatív:** A kérések nem térnek vissza státuszkódokkal.
+
 **Javaslatok:** Státuszkódok hozzáadása.
