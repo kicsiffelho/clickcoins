@@ -45,9 +45,9 @@ router.get('/background-colors/:userId', async (req, res) => {
         if (backgroundColors.length === 0) {
             return res.json([]);
         }
-        const response = backgroundColors.map(colorDoc => ({
+        const response = backgroundColors.map((colorDoc) => ({
             color: colorDoc.color,
-            owned: true
+            owned: colorDoc.owned
         }));
         return res.json(response);
     }
