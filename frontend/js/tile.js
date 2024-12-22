@@ -17,6 +17,7 @@ export async function changeBackgroundColor(color, price) {
         if (spentAmount <= 0) {
           alert('Not enough currency! Earn more coins!');
           console.error('Not enough currency to change background color');
+          return;
         }
       }
       
