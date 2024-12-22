@@ -59,8 +59,7 @@ function updateGameAreaBackground(color) {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('DOM Content Loaded'); 
-  const userId = window.clerk.user.id;
+  console.log('DOM Content Loaded');
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
   console.log(bgButton);
   bgButton.forEach(button => {
