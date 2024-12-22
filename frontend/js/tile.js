@@ -10,24 +10,22 @@ export async function changeBackgroundColor(color, price) {
     const userId = user.id;
     try {
       const isOwned = isBackgroundOwned(userId, color);
-      if (isOwned) {
-        await postBackgroundColor(userId, color); 
-        alert('Background changed!'); 
-        return; 
-      }
-      const spentAmount = await spendCurrency(userId, price);
-      if (spentAmount > 0) {
-        await postBackgroundColor(userId, color);
-        const updatedAmount = await fetchCurrency(userId);
-        if (updatedAmount !== null) {
-          updateCurrencyDisplay(updatedAmount);
+      console.log('Background owned: ', isOwned);
+      if (!isOwned) {
+        const spentAmount = await spendCurrency(userId, price);
+        console.log('Spent amount: ', spentAmount);
+        if (spentAmount > 0) {
+          alert('Not enough currency! Earn more coins!');
+          console.error('Not enough currency to change background color');
         }
-        alert('Background changed. Check it out in the game!');
       }
-      else {
-        alert('Not enough currency! Earn more coins!');
-        console.error('Not enough currency to change background color');
+      
+      await postBackgroundColor(userId, color);
+      const updatedAmount = await fetchCurrency(userId);
+      if (updatedAmount !== null) {
+        updateCurrencyDisplay(updatedAmount);
       }
+      alert('Background changed. Check it out in the game!');
     }
     catch (error) {
       console.error('Error spending currency:', error);
