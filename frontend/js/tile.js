@@ -11,11 +11,7 @@ export async function changeBackgroundColor(color, price) {
     try {
       const isOwned = isBackgroundOwned(userId, color);
       console.log('Background owned: ', isOwned);
-      if (isOwned) {
-        await postBackgroundColor(userId, color);
-        alert('Background changed!');
-        return;
-      }
+      console.log(price);
 
       const spentAmount = await spendCurrency(userId, price);
       console.log('Spent amount: ', spentAmount);
