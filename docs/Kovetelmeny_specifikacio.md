@@ -37,7 +37,8 @@ Az ideális **ClickCoins* rendszer:
 #### Egyéb funkciók:
 - Reszponzív design különböző eszközökre való optimalizálás érdekében.
 ## 5. Rendszerre vonatkozó törvények, szabványok, ajánlások
-?????????????
+- GDPR megfelelőség biztosítása a felhasználói adatok kezelésénél.
+- OWASP irányelvek betartása a biztonság érdekében.
 ## 6. Jelenlegi üzleti folyamatok modellje
 Jelenleg nincs olyan platform, amely interaktív módon kombinálná a következő funkciókat:
 
@@ -65,5 +66,8 @@ Az új rendszer:
 ## 9. Riportok
 ???????
 ## 10. Fogalomtár
-**Reszponvíz design**: Képernyő mérettől függően igazotik a felület mérete, azaz több eszközök is probléma nélkül üzemelhet.
+- **Reszponvíz design**: Képernyő mérettől függően igazotik a felület mérete, azaz több eszközök is probléma nélkül üzemelhet.
+- **GDPR**: Az Európai Unió általános adatvédelmi rendelete.
+- **OWASP**: Az OWASP (Open Web Application Security Project) egy nyílt forráskódú közösségi projekt, amely a webalkalmazások biztonságának javítását célozza.
+- **Coin**: A játékban gyűjthető virtuális valuta.
 ?????
