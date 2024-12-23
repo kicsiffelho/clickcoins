@@ -12,7 +12,7 @@ A ClickCoins projekt célja, hogy interaktív platformot biztosítson a felhaszn
 
 - **Projektvezető**: Felelős a projekt ütemezéséért, a csapat koordinálásáért és a főbb döntések meghozataláért.
 - **Fejlesztők**:
-  - Frontend csapat: Felületfejlesztés React.js segítségével.
+  - Frontend csapat: Felületfejlesztés HTML, CSS, JavaScript segítségével.
   - Backend csapat: API fejlesztés és adatbáziskezelés Node.js és MongoDB használatával.
 - **Tesztelők**: Felelősek az alkalmazás hibáinak feltárásáért és az egyes funkciók teszteléséért.
 - **Adminisztrátorok**: A rendszer üzemeltetéséért és karbantartásáért felelős személyek.
@@ -38,21 +38,21 @@ A felhasználók nem rendelkeznek egységes platformmal az érmék gyűjtésére
 Az új rendszer:
 - Lehetővé teszi a felhasználók számára, hogy regisztráljanak és bejelentkezzenek.
 - Az érméket valós időben követhetően kezelje.
-- Adminisztrációs funkciókat nyújtson a statisztikák és hibajavítások kezelésére.
+- Adminisztrációs funkciókat nyújtson a hibajavítások kezelésére.
 
 ---
 
 ## 4. Fizikai környezet
 
 ### Fejlesztési eszközök
-- **Frontend**: Visual Studio Code, React.js, Vite
+- **Frontend**: HTML, CSS, BootStrap, JavaScript, Vite
 - **Backend**: Node.js, Express.js
-- **Adatbázis**: MongoDB Atlas
+- **Adatbázis**: MongoDB Mongoose
 - **Verziókövetés**: Git, GitHub
-- **Tesztelés**: Postman, Jest
+- **Tesztelés**: Manuális
 
 ### Rendszerkörnyezet
-- Szerver: Linux alapú hosztolás (Ubuntu Server 20.04)
+- Szerver: Szerver hostolása Renderen
 - Böngészők: Google Chrome, Mozilla Firefox, Microsoft Edge
 - Támogatott eszközök: Asztali gép, tablet, okostelefon
 
@@ -65,13 +65,12 @@ Az új rendszer:
   - Érmék gyűjtése
   - Saját profil módosítása
 - **Adminisztrátor**:
-  - Felhasználói statisztikák megtekintése
   - Hibák és bugok kezelése
 
 ### 5.2 Fő funkciók
 - **Regisztráció és Bejelentkezés**
   - Felhasználók e-mail címmel és jelszóval történő regisztrációja.
-  - Jelszó-visszaállítási lehetőség.
+  - Felhasználók e-mail címmel vagy felhasználónévvel és jelszóval történő bejelentkezése.
 - **Érmék kezelése**
   - Valós idejű frissítések az érmék állapotáról.
   - Adatbázis alapú tárolás.
@@ -84,18 +83,74 @@ Az új rendszer:
 
 | Tábla neve | Mezők                    | Leírás                        |
 |------------|--------------------------|-------------------------------|
-| users      | id, email, password      | Felhasználók alapadatai       |
-| coins      | id, user_id, amount      | Érmék felhasználónként        |
-| logs       | id, user_id, action, timestamp | Felhasználói aktivitások naplózása |
+| users | id, email, password, username | Felhasználók alapadatai |
+| backgrouncolors | id, userId, color, owned, timestamp | Háttérszínek tárolása |
+| currencies | id, userId, amount | Felhasználó egyenlege |
+| currencytransactions | id, userId, amount, type, timestamp | Valuta tranzakciók |
+| scores | id, userId, score, username | Felhasználók pontszáma |
 
-### Példa Adatbázis Lekérdezések
-- **Felhasználók listázása**:
-  ```sql
-  SELECT * FROM users;
+### 6.1 Users tábla
+| Mező neve | Típus | Leírás |
+|-----------|-------|--------|
+| id | String | Clerk által generált felhasználó egyedi azonosítója |
+| emailAddresses | Array | A felhasználóhoz társított e-mail címek listája |
+| username | String | Felhasználó felhasználóneve |
+| password | String | Felhasználó jelszava |
+| createdAt | Date | Felhasználó regisztrációjának a dátuma |
+
+### 6.2 Háttérszín kezelő tábla - backgroundcolors
+| Mező neve | Típus | Kötelező | Alapérték | Leírás |
+|-----------|-------|----------|-----------|--------|
+| id | String | x | - | MongoDB által generált ObjectId |
+| userId | String | x | - | Clerk által generált felhasználó egyedi azonosítója |
+| color | String | x | - | Háttérszín hex értéke |
+| owned | Boolean | - | false | Felhasználó már megvette-e a háttérszínt |
+| timestamp | Date | - | Date.now | Bejegyzés dátuma és ideje |
+
+### 6.3 Felhasználó egyenlegét kezelő tábla - currency
+| Mező neve | Típus | Kötelező | Alapérték | Leírás |
+|-----------|-------|----------|-----------|--------|
+| id | String | x | - | MongoDB által generált ObjectId |
+| userId | String | x | - | Clerk által generált felhasználó egyedi azonosítója |
+| amount | Number | x | - | A felhasználó egyenlege |
+
+### 6.4 Felhasználó tranzakcióit kezelő tábla - currencytransactions
+| Mező neve | Típus | Kötelező | Alapérték | Leírás |
+|-----------|-------|----------|-----------|--------|
+| id | String | x | - | MongoDB által generált ObjectId |
+| userId | String | x | - | Clerk által generált felhasználó egyedi azonosítója |
+| amount | Number | x | - | A felhasználó által kapott vagy költött érték |
+| type | Strig | x | - | Tranzakció típusa: earn, spend |
+| timestamp | Date | - | Date.now | Bejegyzés dátuma és ideje |
+
+### 6.5 Felhasználó pontszámát kezelő tábla - scores
+| Mező neve | Típus | Kötelező | Alapérték | Leírás |
+|-----------|-------|----------|-----------|--------|
+| id | String | x | - | MongoDB által generált ObjectId |
+| userId | String | x | - | Clerk által generált felhasználó egyedi azonosítója |
+| score | Number | x | - | A felhasználó pontszáma |
+| username | String | x | - | Clerkből lekérdezett érték |
+
+### Adatbázis Lekérdezések
+- **Utolsó felhasznált háttérszín**:
   ```
-- **Felhasználó érméinek lekérése**:
-  ```sql
-  SELECT amount FROM coins WHERE user_id = ?;
+  BackgroundColor.findOne({userId: userId}).sort({timestamp: -1});
+  ```
+- **Felhasználó által vásárolt összes háttérszín**:
+  ```
+  BackgroundColor.find({ userId });
+  ```
+- **Felhasználó egyenlege**:
+  ```
+  Currency.findOne({ userId });
+  ```
+- **TOP 10 pontszámok a ranglistához**:
+  ```
+  Score.find().sort({ score: -1 }).limit(10);
+  ```
+- **Felhasználó legnagyobb pontszáma**:
+  ```
+  Score.find().sort({ score: -1 }).limit(10);
   ```
 
 ---
@@ -108,7 +163,10 @@ Az új rendszer:
 - **MongoDB**: Adatbázis-kezelés.
 
 ### 7.2 Frontend architektúra
-- **React.js**: Komponens alapú felépítés.
+- **HTML**: Statikus weboldal.
+- **CSS**: Egyedi és reszponzív design.
+- **BootStrap**: Komponensek, grid rendszer.
+- **JavaScript**: Játék mechanika.
 - **Vite**: Gyors fejlesztői környezet.
 
 ### 7.3 Rendszerkapcsolatok
@@ -126,7 +184,8 @@ Az új rendszer:
 ### Tesztelendő funkciók
 - Regisztráció és bejelentkezés
 - Érmék gyűjtése
-- Adminisztrációs felület
+- Valuta tranzakciók
+- API endpointok
 
 ---
 
@@ -135,22 +194,24 @@ Az új rendszer:
 ### Telepítés lépései
 1. **Kódbázis klónozása**:
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/kicsiffelho/clickcoins
    ```
-2. **Backend függőségek telepítése**:
+2. **Backend és frontend függőségek telepítése**:
    ```bash
-   cd backend && npm install
+   npm install && npm run build
    ```
-3. **Frontend függőségek telepítése**:
+3. **Alkalmazás build-elése**:
    ```bash
-   cd frontend && npm install
+   npm run build
    ```
 4. **Adatbázis konfiguráció**:
-   - MongoDB URI hozzáadása a `.env` fájlhoz.
+   - MongoDB URI hozzáadása a Render titkos fáljaihoz (.env).
+5. **Clerk konfiguráció**:
+   - Clerk key hozzáadása a Render környezeti változókhoz.
 5. **Alkalmazás indítása**:
    - Backend:
      ```bash
-     cd backend && npm run dev
+     node backend/server.js
      ```
    - Frontend:
      ```bash
