@@ -1,6 +1,6 @@
 import { get } from "../../backend/routes/scoreRoute";
 
-async function storeScore(score) {
+async function storeScore(score, level) {
     const user = clerk.user;
     if (user) {
         const userId = user.id;
@@ -10,18 +10,16 @@ async function storeScore(score) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({userId, score, username})
+            body: JSON.stringify({userId, score, level, username})
         });
         if (response.ok) {
             const data = await response.json();
             console.log('Score stored:', data);
-        }
-        else {
+        } else {
             const errorData = await response.text();
             console.error('Error storing score:', response.status, errorData);
         }
-    }
-    else {
+    } else {
         console.error('User not logged in');
     }
 }
@@ -50,8 +48,7 @@ async function getScores() {
 
     if (response.ok) {  
         console.log('Scores retrieved:', scores);
-    }
-    else {
+    } else {
         const errorData = await response.text();
         console.error('Error getting scores:', response.status, errorData);
     }

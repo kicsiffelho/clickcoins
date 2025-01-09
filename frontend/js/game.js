@@ -13,7 +13,6 @@ let coinIntervalTime = 800;
 let currencyAmount = 0;
 let gameInProgress = false;
 let level = 1;
-let totalCoins = 0;
 
 const gameArea = document.getElementById("game-area");
 const scoreDisplay = document.getElementById("score");
@@ -53,15 +52,12 @@ function startGame() {
   updateScoreDisplay();
   updateTimerDisplay();
   updateLevelDisplay();
-
   startOverlay.style.display = "none";
   gameArea.style.display = "block";
   scoreDisplay.style.display = "block";
   timerDisplay.style.display = "block";
   scoreModal.style.display = "none";
-
   createCoin();
-
   coinInterval = setInterval(createCoin, coinIntervalTime);
   timerInterval = setInterval(updateTimer, 1000);
   difficultyInterval = setInterval(increaseDifficulty, 5000);
@@ -87,27 +83,22 @@ function generateRandomPosition() {
 
 function createCoin() {
   if (timeLeft <= 0) return;
-
   const coin = document.createElement("img");
   coin.src = new URL("../assets/coin.png", import.meta.url).href;
   coin.classList.add("coin");
   const { x, y } = generateRandomPosition();
   coin.style.left = `${x}px`;
   coin.style.top = `${y}px`;
-
   coin.addEventListener("click", () => {
     coinSound.playbackRate = 2;
     coinSound.volume = 0.2;
     coinSound.play();
     gameArea.removeChild(coin);
     score++;
-    totalCoins++;
     updateScoreDisplay();
     increaseDifficulty();
   });
-
   gameArea.appendChild(coin);
-
   setTimeout(() => {
     if (gameArea.contains(coin)) {
       gameArea.removeChild(coin);
@@ -117,7 +108,6 @@ function createCoin() {
 
 function updateTimer() {
   if (timeLeft <= 0) return;
-
   timeLeft--;
   updateTimerDisplay();
   if (timeLeft <= 0) {
@@ -143,7 +133,6 @@ function showFinalScore() {
   document.getElementById("final-score").textContent = `Final score: ${score}`;
   document.getElementById("final-level").textContent = `Highest level: ${level}`;
   scoreModal.style.display = "block";
-
   if (!gameInProgress) {
     storeScore(score, level).then(() => {
       const user = window.clerk.user;
@@ -153,7 +142,6 @@ function showFinalScore() {
           .then((earnedAmount) => {
             currencyAmount += earnedAmount;
             updateCurrencyDisplay(currencyAmount);
-            updateTotalLevel(userId);
           })
           .catch((error) => {
             console.error("Error earning currency:", error);
@@ -163,11 +151,6 @@ function showFinalScore() {
       }
     });
   }
-}
-
-async function updateTotalLevel(userId) {
-  const totalLevel = Math.floor(totalCoins / 50) + 1;
-  document.getElementById("total-level").textContent = `Your Level: ${totalLevel}`;
 }
 
 document.getElementById("start-button").onclick = function () {
