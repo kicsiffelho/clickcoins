@@ -12,6 +12,7 @@ let difficultyInterval;
 let coinIntervalTime = 800;
 let currencyAmount = 0;
 let gameInProgress = false;
+let level = 1;
 
 const gameArea = document.getElementById("game-area");
 const scoreDisplay = document.getElementById("score");
@@ -21,6 +22,7 @@ const scoreModal = document.getElementById("score-modal");
 const tryAgainButton = document.getElementById("try-again-button");
 const closeModalButton = document.getElementById("close-modal");
 const coinSound = new Audio(new URL("../assets/click.wav", import.meta.url).href);
+const levelDisplay = document.getElementById("level");
 
 async function initalizeCurrency() {
   const user = window.clerk.user;
@@ -41,17 +43,16 @@ async function initalizeCurrency() {
   }
 }
 
-// Start game
 function startGame() {
   gameInProgress = true;
-  // Reset score and timer
   score = 0;
   timeLeft = 30;
   coinIntervalTime = 800;
+  level = 1;
   updateScoreDisplay();
   updateTimerDisplay();
+  updateLevelDisplay();
 
-  // Remove overlay
   startOverlay.style.display = "none";
   gameArea.style.display = "block";
   scoreDisplay.style.display = "block";
@@ -73,7 +74,10 @@ function updateTimerDisplay() {
   timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
-// Generate random positions for coins
+function updateLevelDisplay() {
+  levelDisplay.textContent = `Level: ${level}`;
+}
+
 function generateRandomPosition() {
   const x = Math.random() * (gameArea.offsetWidth - 60);
   const y = Math.random() * (gameArea.offsetHeight - 60);
@@ -90,7 +94,6 @@ function createCoin() {
   coin.style.left = `${x}px`;
   coin.style.top = `${y}px`;
 
-  // Remove coin when clicked
   coin.addEventListener("click", () => {
     coinSound.playbackRate = 2;
     coinSound.volume = 0.2;
@@ -98,12 +101,11 @@ function createCoin() {
     gameArea.removeChild(coin);
     score++;
     updateScoreDisplay();
+    increaseDifficulty();
   });
 
-  // Add coin
   gameArea.appendChild(coin);
 
-  // Remove coin after 1 second if not clicked
   setTimeout(() => {
     if (gameArea.contains(coin)) {
       gameArea.removeChild(coin);
@@ -126,15 +128,18 @@ function updateTimer() {
 }
 
 function increaseDifficulty() {
-  if (coinIntervalTime > 300) {
+  if (score % 10 === 0 && coinIntervalTime > 300) {
+    level++;
     coinIntervalTime -= 100;
     clearInterval(coinInterval);
     coinInterval = setInterval(createCoin, coinIntervalTime);
+    updateLevelDisplay();
   }
 }
 
 function showFinalScore() {
   document.getElementById("final-score").textContent = `Final score: ${score}`;
+  document.getElementById("final-level").textContent = `Highest level: ${level}`;
   scoreModal.style.display = "block";
 
   if (!gameInProgress) {
