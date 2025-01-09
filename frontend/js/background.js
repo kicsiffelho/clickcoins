@@ -5,7 +5,7 @@ async function postBackgroundColor(userId, color) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ userId, color })
+            body: JSON.stringify({ userId, color})
         });
         if (!response.ok) {
             throw new Error('Failed to save background color');
@@ -32,4 +32,29 @@ async function fetchBackgroundColor(userId) {
     }
 }
 
-export { postBackgroundColor, fetchBackgroundColor };
+async function isBackgroundOwned(userId, color) {
+    try {
+        const response = await fetch(`/api/background-colors/${userId}`);
+        if(response.ok) {
+            try {
+                const colors = await response.json();
+                const ownedColor = colors.find(c => c.color === color);
+                return ownedColor ? ownedColor.owned : false;
+            }
+            catch (error) {
+                console.error('Error parsing JSON response:', error);
+                return false;
+            }
+        }
+        else {
+            console.error('Error fetching if background color owned: ', response.status);
+            return false;
+        }
+    }
+    catch (error) {
+        console.error('Error fetching if background color owned: ', error);
+        return false;
+    }
+}
+
+export { postBackgroundColor, fetchBackgroundColor, isBackgroundOwned };

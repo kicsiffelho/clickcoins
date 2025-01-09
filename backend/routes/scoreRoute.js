@@ -3,8 +3,8 @@ const router = express.Router();
 const { Score } = require('../db_connect');
 
 router.post('/store-score', async (req, res) => {
-    const { userId, score } = req.body;
-    const newScore = new Score({ userId, score });
+    const { userId, score, username } = req.body;
+    const newScore = new Score({ userId, score, username });
     try {
         await newScore.save();
         console.log('Score added');
@@ -18,7 +18,7 @@ router.post('/store-score', async (req, res) => {
 
 router.get('/scores', async(req, res) => {
     try {
-        const currency = await Score.find().sort({ score: -1 }).limit(10);
+        const score = await Score.find().sort({ score: -1 }).limit(10);
         if (score) {
             res.json(score);
         }
@@ -31,5 +31,24 @@ router.get('/scores', async(req, res) => {
         res.status(500).json({ error: 'Server error while getting score' });
     }
 });
+
+router.get('/highscore/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const highscore = await Score.findOne({ userId }).sort({ score: -1 }).limit(1);
+
+        if (highscore) {
+            res.json(highscore);
+            console.log('Found highscore:', highscore);
+        }
+        else {
+            res.json({score:0});
+            console.log('No highscore found, return 0');
+        }
+    }
+    catch (error) {
+        console.error('Error getting high score:', error);
+    }
+})
 
 module.exports = router;

@@ -1,14 +1,14 @@
 import { Clerk } from "@clerk/clerk-js";
 import { dark, shadesOfPurple } from '@clerk/themes';
 
-const clerkPubKey = 'pk_test_Y29oZXJlbnQtcGVnYXN1cy04MS5jbGVyay5hY2NvdW50cy5kZXYk';
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const clerk = new Clerk(clerkPubKey);
 
 async function initClerk() {
     await clerk.load();
 
     if (clerk.user) {
-        window.location.href = './welcome.html';
+        window.location.href = '/welcome';
     } else {
         document.getElementById("app").innerHTML = `<div id="sign-in"></div>`;
         const signInDiv = document.getElementById("sign-in");

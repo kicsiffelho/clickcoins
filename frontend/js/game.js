@@ -20,7 +20,7 @@ const startOverlay = document.getElementById("start-overlay");
 const scoreModal = document.getElementById("score-modal");
 const tryAgainButton = document.getElementById("try-again-button");
 const closeModalButton = document.getElementById("close-modal");
-const coinSound = new Audio("./assets/click.wav");
+const coinSound = new Audio(new URL("../assets/click.wav", import.meta.url).href);
 
 async function initalizeCurrency() {
   const user = window.clerk.user;
@@ -93,6 +93,7 @@ function createCoin() {
   // Remove coin when clicked
   coin.addEventListener("click", () => {
     coinSound.playbackRate = 2;
+    coinSound.volume = 0.2;
     coinSound.play();
     gameArea.removeChild(coin);
     score++;
