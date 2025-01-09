@@ -13,6 +13,7 @@ let coinIntervalTime = 800;
 let currencyAmount = 0;
 let gameInProgress = false;
 let level = 1;
+let totalCoins = 0;
 
 const gameArea = document.getElementById("game-area");
 const scoreDisplay = document.getElementById("score");
@@ -100,6 +101,7 @@ function createCoin() {
     coinSound.play();
     gameArea.removeChild(coin);
     score++;
+    totalCoins++;
     updateScoreDisplay();
     increaseDifficulty();
   });
@@ -128,7 +130,7 @@ function updateTimer() {
 }
 
 function increaseDifficulty() {
-  if (score % 10 === 0 && coinIntervalTime > 300) {
+  if (score % 8 === 0 && coinIntervalTime > 300) {
     level++;
     coinIntervalTime -= 100;
     clearInterval(coinInterval);
@@ -143,7 +145,7 @@ function showFinalScore() {
   scoreModal.style.display = "block";
 
   if (!gameInProgress) {
-    storeScore(score).then(() => {
+    storeScore(score, level).then(() => {
       const user = window.clerk.user;
       if (user) {
         const userId = user.id;
@@ -151,6 +153,7 @@ function showFinalScore() {
           .then((earnedAmount) => {
             currencyAmount += earnedAmount;
             updateCurrencyDisplay(currencyAmount);
+            updateTotalLevel(userId);
           })
           .catch((error) => {
             console.error("Error earning currency:", error);
@@ -160,6 +163,11 @@ function showFinalScore() {
       }
     });
   }
+}
+
+async function updateTotalLevel(userId) {
+  const totalLevel = Math.floor(totalCoins / 50) + 1;
+  document.getElementById("total-level").textContent = `Your Level: ${totalLevel}`;
 }
 
 document.getElementById("start-button").onclick = function () {
