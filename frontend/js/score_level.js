@@ -18,12 +18,6 @@ function addCoins(coins) {
   }
 }
 
-
-function onCoinCollected(coins) {
-  addCoins(coins);
-  document.getElementById('user-final-score').innerText = totalCoins;
-}
-
 document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('user-level').innerText = level;
   document.getElementById('user-final-score').innerText = totalCoins;

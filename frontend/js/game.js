@@ -153,6 +153,12 @@ function showFinalScore() {
   }
 }
 
+
+function onCoinCollected(coins) {
+  addCoins(coins);
+  document.getElementById('user-final-score').innerText = totalCoins;
+}
+
 document.getElementById("start-button").onclick = function () {
   initalizeCurrency();
   startGame();
