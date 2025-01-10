@@ -1,18 +1,30 @@
-app.post('/api/storeScore', async (req, res) => {
-  const { userId, score, level } = req.body;
-  await db.collection('scores').insertOne({ userId, score, level, date: new Date() });
-  res.status(200).send('Score stored successfully');
-});
+let totalCoins = 0;
+let level = 1;
 
-async function storeScore(userId, score, level) {
-  const response = await fetch('/api/storeScore', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ userId, score, level }),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to store score');
+function updateLevel() {
+  if (totalCoins >= 50) {
+    level = Math.floor(totalCoins / 50) + 1;
+  } else {
+    level = 1;
+  }
+  document.getElementById('user-level').innerText = level;
+}
+
+function addCoins(coins) {
+  totalCoins += coins;
+  updateLevel();
+  if (coins >= 8) {
+    alert('Next difficulty level');
   }
 }
+
+
+function onCoinCollected(coins) {
+  addCoins(coins);
+  document.getElementById('user-final-score').innerText = totalCoins;
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.getElementById('user-level').innerText = level;
+  document.getElementById('user-final-score').innerText = totalCoins;
+});
