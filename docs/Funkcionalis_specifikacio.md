@@ -28,14 +28,16 @@ Előfeltételek:
 - A rendszerhez való hozzáféréshez regisztrált felhasználói fiók és jelszó szükséges.
 
 ## 3. Megfeleltetés, hogyan fedik le a használati esetek a követelményeket
-- K1: Az alkalmazás biztosítja a felhasználók bejelentkezési lehetőségét, ahol a felhasználók email címük vagy felhasználónevük és jelszavuk megadásával léphetnek be. Hibás adatok esetén hibaüzenetet kapnak.
-- K2: A felhasználók regisztrálhatják magukat felhasználónév, email cím és jelszó megadásával. A jelszavak titkosítva tárolódnak az adatbázisban, és a hiányzó vagy hibás adatok esetén a rendszer értesíti a felhasználót.
-- K3: A rendszer biztosítja a felhasználók számára a játék indítását és a store felület használatát.
-- K4: A felhasználók módosíthatják felhasználónevüket, új név megadásával.
-- K5: A felhasználók módosíthatják jelszavukat, amelyhez meg kell adniuk régi és új jelszavukat, valamint az új jelszó megerősítését. A változtatás után a rendszer minden eszközről kilépteti őket.
-- K6: A játék során a felhasználók érméket gyűjtenek 30 másodpercig tartó kattintással.
-- K7: A rendszer ranglistát készít a játékosok pontszámairól, ahol a legtöbb pontot elért felhasználók kerülnek az élre.
-- K8: A felhasználók játékon belüli valutával vásárolhatnak háttérszíneket a játékfelülethez.
+| ID  | Verzió | Követelmény | Funkció |
+|-----|--------|-------------|---------|
+| K1  | V1.0    | Bejelentkezési felület | Az alkalmazás biztosítja a felhasználók bejelentkezési lehetőségét, ahol a felhasználók email címük vagy felhasználónevük és jelszavuk megadásával léphetnek be. Hibás adatok esetén hibaüzenetet kapnak. |
+| K2  | V1.0    | Regisztráció        | A felhasználók regisztrálhatják magukat felhasználónév, email cím és jelszó megadásával. A jelszavak titkosítva tárolódnak az adatbázisban, és a hiányzó vagy hibás adatok esetén a rendszer értesíti a felhasználót. |
+| K3  | V1.0    | Jogosultsági szint  | A rendszer biztosítja a felhasználók számára a játék indítását és a store felület használatát. |
+| K4  | V1.0    | Felhasználó módosítása | A felhasználók módosíthatják felhasználónevüket, új név megadásával. |
+| K5  | V1.0    | Jelszó módosítása   | A felhasználók módosíthatják jelszavukat, amelyhez meg kell adniuk régi és új jelszavukat, valamint az új jelszó megerősítését. A változtatás után a rendszer minden eszközről kilépteti őket. |
+| K6  | V1.0    | Játék               | A játék során a felhasználók érméket gyűjtenek 30 másodpercig tartó kattintással. |
+| K7  | V1.0    | Ranglista           | A rendszer ranglistát készít a játékosok pontszámairól, ahol a legtöbb pontot elért felhasználók kerülnek az élre. |
+| K8  | V1.0    | Vásárlás            | A felhasználók játékon belüli valutával vásárolhatnak háttérszíneket a játékfelülethez. |
 
 ## 4. Képernyőtervek
 A képernyőtervek bemutatják a játék különböző felhasználói felületeit. A tervek tartalmazzák a főbb funkciók, mint a játékkezdés, pontok megjelenítése és a háttér váltás folyamatának lépéseit.
