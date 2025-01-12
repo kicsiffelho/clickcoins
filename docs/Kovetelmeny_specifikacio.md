@@ -63,11 +63,8 @@ Az új rendszer:
 | Feladattípus | K6 | Játék | 1.0 | A játék felületen kattintással érmék gyűjtése 30 másodpercen keresztül. |
 | Statisztika | K7 | Ranglista | 1.0 | Egy lista a játékosok pontszámairól, a lista elején a legtöbb pontot elért felhasználó található. |
 | Felület | K8 | Vásárlás | 1.0 | Játékon belüli valuta használata a játék felületének háttérszínét megváltoztató színek vásárlására. |
-## 9. Riportok
-???????
-## 10. Fogalomtár
+## 9. Fogalomtár
 - **Reszponvíz design**: Képernyő mérettől függően igazotik a felület mérete, azaz több eszközök is probléma nélkül üzemelhet.
 - **GDPR**: Az Európai Unió általános adatvédelmi rendelete.
 - **OWASP**: Az OWASP (Open Web Application Security Project) egy nyílt forráskódú közösségi projekt, amely a webalkalmazások biztonságának javítását célozza.
 - **Coin**: A játékban gyűjthető virtuális valuta.
-?????
