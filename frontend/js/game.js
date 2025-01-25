@@ -12,6 +12,8 @@ let difficultyInterval;
 let coinIntervalTime = 800;
 let currencyAmount = 0;
 let gameInProgress = false;
+let totalCoins = 0;
+let currentLevel = 1;
 
 const gameArea = document.getElementById("game-area");
 const scoreDisplay = document.getElementById("score");
@@ -41,17 +43,16 @@ async function initalizeCurrency() {
   }
 }
 
-// Start game
+
 function startGame() {
   gameInProgress = true;
-  // Reset score and timer
+
   score = 0;
   timeLeft = 30;
   coinIntervalTime = 800;
   updateScoreDisplay();
   updateTimerDisplay();
 
-  // Remove overlay
   startOverlay.style.display = "none";
   gameArea.style.display = "block";
   scoreDisplay.style.display = "block";
@@ -73,7 +74,6 @@ function updateTimerDisplay() {
   timerDisplay.textContent = `Time Left: ${timeLeft}s`;
 }
 
-// Generate random positions for coins
 function generateRandomPosition() {
   const x = Math.random() * (gameArea.offsetWidth - 60);
   const y = Math.random() * (gameArea.offsetHeight - 60);
@@ -90,7 +90,7 @@ function createCoin() {
   coin.style.left = `${x}px`;
   coin.style.top = `${y}px`;
 
-  // Remove coin when clicked
+
   coin.addEventListener("click", () => {
     coinSound.playbackRate = 2;
     coinSound.volume = 0.2;
@@ -100,10 +100,9 @@ function createCoin() {
     updateScoreDisplay();
   });
 
-  // Add coin
+
   gameArea.appendChild(coin);
 
-  // Remove coin after 1 second if not clicked
   setTimeout(() => {
     if (gameArea.contains(coin)) {
       gameArea.removeChild(coin);
@@ -154,6 +153,20 @@ function showFinalScore() {
         console.error("User not logged in");
       }
     });
+  }
+}
+
+function addCoins(amount) {
+  totalCoins += amount;
+  checkLevelUp();
+}
+
+function checkLevelUp() {
+  const levelDisplay = document.getElementById("level-display");
+  const newLevel = Math.floor(totalCoins / 50) + 1;
+  if (newLevel > currentLevel) {
+      currentLevel = newLevel;
+      levelDisplay.textContent = `Level: ${currentLevel}`;
   }
 }
 
