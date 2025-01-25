@@ -100,6 +100,18 @@ function createCoin() {
     updateScoreDisplay();
   });
 
+  function showFloatingCoin() {
+    const coin = document.getElementById('floating-coin');
+    coin.style.display = 'block';
+    coin.style.left = `${Math.random() * 90}%`;
+    coin.style.top = `${Math.random() * 90}%`;
+  
+    coin.onclick = function () {
+      coin.style.display = 'none';
+      addCoins(10);
+    };
+  }
+
 
   gameArea.appendChild(coin);
 
