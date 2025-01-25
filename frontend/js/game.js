@@ -102,14 +102,38 @@ function createCoin() {
 
   function showFloatingCoin() {
     const coin = document.getElementById('floating-coin');
+    let left, top;
+  
+    do {
+      left = Math.random() * 90;
+      top = Math.random() * 90;
+    } while (isCoinOverlapping(left, top));
+  
     coin.style.display = 'block';
-    coin.style.left = `${Math.random() * 90}%`;
-    coin.style.top = `${Math.random() * 90}%`;
+    coin.style.left = `${left}%`;
+    coin.style.top = `${top}%`;
   
     coin.onclick = function () {
       coin.style.display = 'none';
       addCoins(10);
     };
+  }
+  
+  function isCoinOverlapping(left, top) {
+    const coin = document.getElementById('floating-coin');
+    const coinRect = coin.getBoundingClientRect();
+    const gameArea = document.getElementById('game-area');
+    const gameAreaRect = gameArea.getBoundingClientRect();
+  
+    const coinLeft = gameAreaRect.left + (left / 100) * gameAreaRect.width;
+    const coinTop = gameAreaRect.top + (top / 100) * gameAreaRect.height;
+  
+    return (
+      coinLeft < coinRect.right &&
+      coinLeft + coinRect.width > coinRect.left &&
+      coinTop < coinRect.bottom &&
+      coinTop + coinRect.height > coinRect.top
+    );
   }
 
 
