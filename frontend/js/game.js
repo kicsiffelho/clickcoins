@@ -175,6 +175,9 @@ import { preventDoubleClick } from './utils.js';
 document.getElementById("start-button").onclick = function () {
   initalizeCurrency();
   startGame();
+  totalCoins = 0;
+  currentLevel = 1;
+  document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
 };
 
 preventDoubleClick(document.getElementById("game-area"));
