@@ -157,10 +157,17 @@ function showFinalScore() {
   }
 }
 
+import { preventDoubleClick } from './utils.js';
+
 document.getElementById("start-button").onclick = function () {
   initalizeCurrency();
   startGame();
 };
+
+preventDoubleClick(document.getElementById("game-area"));
+preventDoubleClick(document.getElementById("start-button"));
+preventDoubleClick(document.getElementById("try-again-button"));
+preventDoubleClick(document.getElementById("close-modal"));
 
 tryAgainButton.onclick = function () {
   startGame();
