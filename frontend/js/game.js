@@ -190,6 +190,7 @@ document.getElementById("start-button").onclick = function () {
   totalCoins = 0;
   currentLevel = 1;
   document.getElementById("level-display").textContent = `Level: ${currentLevel}`;
+  showFloatingCoin();
 };
 
 preventDoubleClick(document.getElementById("game-area"));
