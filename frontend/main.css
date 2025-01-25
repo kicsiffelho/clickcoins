@@ -41,9 +41,24 @@ body {
 }
 
 .coin {
-  width: 40px;
-  height: 40px;
   position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url('./assets/coin.png');
+  background-size: cover;
+  animation: floatIn 1s forwards;
+  cursor: pointer;
+}
+
+@keyframes floatIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 #score,
