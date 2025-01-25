@@ -58,6 +58,7 @@ function updateGameAreaBackground(color) {
   }
 }
 
+import { preventDoubleClick } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const bgButton = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
@@ -101,12 +102,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (button.innerText === 'Change') {
         price = 0;
-      }
-      await changeBackgroundColor(color, price);
-    })
-  })
-  setBackgroundColor();
-})
+    }
+    await changeBackgroundColor(color, price);
+});
+preventDoubleClick(button);
+});
+setBackgroundColor();
+});
 
 export async function updateButtonTexts(userId) {
   const bgButtons = document.querySelectorAll('#bgBlue, #bgBrown, #bgCrimson, #bgGreen, #bgGrey, #bgOrange, #bgPink, #bgRed');
