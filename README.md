@@ -25,10 +25,10 @@ If you have any problems, feel free to reach out [support@gmail.com](mailto:supp
 Have fun and enjoy the adventure!
 
 ## Tech stack
-HTML, CSS, Bootstrap, JavaScript, Node.js, Express, MongoDB
+HTML, CSS, Bootstrap, JavaScript, Node.js, Express, MongoDB, Clerk
 
 Hosted on Render
-
+<!--
 ## Screenshots
-
+-->
 
